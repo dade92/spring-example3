@@ -4,17 +4,21 @@ import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 @Configuration
-public class MongoConfig {
+@EnableConfigurationProperties(MongoProperties.class)
+public class MongoConfiguration {
 
     @Bean
-    public MongoClient mongoClient() {
+    public MongoClient mongoClient(
+            MongoProperties mongoProperties
+    ) {
         ConnectionString connectionString =
-                new ConnectionString("mongodb://root:password@localhost:27017/test?authSource=admin");
+                new ConnectionString(mongoProperties.url);
 
         MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
                 .applyConnectionString(connectionString)
