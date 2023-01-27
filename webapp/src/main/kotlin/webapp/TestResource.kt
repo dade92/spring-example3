@@ -2,6 +2,7 @@ package webapp
 
 import domain.Customer
 import domain.FavouriteDestinations
+import domain.FindCustomerUseCase
 import domain.InsertCustomerUseCase
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class TestResource(
-    private val insertCustomerUseCase: InsertCustomerUseCase
+    private val insertCustomerUseCase: InsertCustomerUseCase,
+    private val findCustomerUseCase: FindCustomerUseCase
 ) {
 
     @GetMapping("/alive")
@@ -32,7 +34,7 @@ class TestResource(
         @RequestParam name: String
     ): ResponseEntity<Customer> {
         return ResponseEntity.ok(
-            insertCustomerUseCase.findBy(name)
+            findCustomerUseCase.findBy(name)
         )
     }
 
