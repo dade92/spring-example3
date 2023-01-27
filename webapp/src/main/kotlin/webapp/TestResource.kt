@@ -1,6 +1,7 @@
 package webapp
 
 import domain.Customer
+import domain.FavouriteDestinations
 import domain.InsertCustomerUseCase
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -39,9 +40,10 @@ class TestResource(
 
 data class InsertCustomerRequest(
     val name: String,
-    val age: Int
+    val age: Int,
+    val favouriteDestinations: FavouriteDestinations
 ) {
 
-    fun toDomain() = Customer(this.name, age)
+    fun toDomain() = Customer(this.name, age, favouriteDestinations)
 
 }

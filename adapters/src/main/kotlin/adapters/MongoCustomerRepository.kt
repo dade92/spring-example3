@@ -2,6 +2,7 @@ package adapters
 
 import domain.Customer
 import domain.CustomerRepository
+import domain.FavouriteDestinations
 import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.data.mongodb.core.query.Criteria
 import org.springframework.data.mongodb.core.query.Query
@@ -11,14 +12,33 @@ class MongoCustomerRepository(
 ): CustomerRepository {
 
     override fun insert(customer: Customer) {
-        mongoTemplate.insert(customer, "customer")
+        mongoTemplate.insert(MongoCustomer.fromDomain(customer), "mongocustomer")
     }
 
     override fun find(name: String): Customer {
         val query = Query()
-        query.addCriteria(Criteria.where("name").`is`("Davide"))
-        return mongoTemplate.find(query, Customer::class.java)[0]
+        query.addCriteria(Criteria.where("name").`is`(name))
+        return mongoTemplate.find(query, MongoCustomer::class.java, "mongocustomer")[0].toDomain()
     }
 
+}
 
+data class MongoCustomer(
+    val name: String,
+    val age: Int?,
+    val favouriteDestinations: FavouriteDestinations?
+) {
+    fun toDomain():Customer = Customer(
+        name = name,
+        age = age ?: 0,
+        favouriteDestinations = favouriteDestinations ?: FavouriteDestinations(emptyList())
+    )
+
+    companion object {
+        fun fromDomain(customer: Customer) = MongoCustomer(
+            name = customer.name,
+            age = customer.age,
+            favouriteDestinations = customer.favouriteDestinations
+        )
+    }
 }
