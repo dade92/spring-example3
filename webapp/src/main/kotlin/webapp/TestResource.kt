@@ -28,9 +28,10 @@ class TestResource(
 }
 
 data class InsertCustomerRequest(
-    val name: String
+    val name: String,
+    val age: Int
 ) {
 
-    fun toDomain() = Customer(this.name)
+    fun toDomain() = Customer(this.name, age)
 
 }
