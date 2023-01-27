@@ -8,6 +8,10 @@ class InsertCustomerUseCase(
         customerRepository.insert(customer)
     }
 
+    fun findBy(name: String): Customer {
+        return customerRepository.find(name)
+    }
+
 }
 
 data class Customer(
