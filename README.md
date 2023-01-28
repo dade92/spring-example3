@@ -4,6 +4,7 @@ Sample maven project for spring boot applications using java and kotlin language
 It follows hexagonal architecture principles (https://netflixtechblog.com/ready-for-changes-with-hexagonal-architecture-b315ec967749)
 and uses different testing techniques, especially for the data layer classes.
 It uses some basic concepts of functional programming (like monads) using arrow kotlin library.
+Moreover, it shows usages of other less common technologies (like NoSQL database).
 It contains also a Jenkinsfile to allow continuous integration with jenkins, and 
 a Dockerfile that can be used after the build stage to build a docker image.
 
@@ -15,10 +16,4 @@ by using the .sh script typing: `./build.sh`.
 
 **HOW TO RUN**
 
-Run using `docker compose up` command. 
-This will download from dockerhub the images and run everything.
-
-**HOW TO RUN LOCALLY**
-
-The app expects to find a database locally with all the tables. So, first download this: https://github.com/dade92/mysql-custom.
-Run it and then launch the app locally.
+Run using `docker compose up` command and start application locally.
