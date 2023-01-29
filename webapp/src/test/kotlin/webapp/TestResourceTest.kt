@@ -4,6 +4,7 @@ import com.springexample.utils.Fixtures
 import domain.*
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.verify
+import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
@@ -25,6 +26,7 @@ class TestResourceTest {
     private lateinit var findCustomerUseCase: FindCustomerUseCase
 
     private val INSERT_REQUEST = Fixtures.readJson("/insertRequest.json")
+    private val FIND_RESPONSE = Fixtures.readJson("/findResponse.json")
 
     @Test
     fun `insert successful`() {
@@ -32,7 +34,7 @@ class TestResourceTest {
             MockMvcRequestBuilders.post("/insert")
                 .content(INSERT_REQUEST)
                 .contentType(MediaType.APPLICATION_JSON)
-        ).andExpect(MockMvcResultMatchers.status().isOk)
+        ).andExpect(MockMvcResultMatchers.status().isNoContent)
 
         verify(insertCustomerUseCase).insert(
             Customer(
@@ -42,5 +44,41 @@ class TestResourceTest {
             )
         )
     }
+
+
+    @Test
+    fun `insert fails`() {
+        `when`(
+            insertCustomerUseCase.insert(
+                Customer("Davide", 30, FavouriteDestinations(listOf(Destination("Milan"))))
+            )
+        ).thenThrow(RuntimeException())
+
+        mvc.perform(
+            MockMvcRequestBuilders.post("/insert")
+                .content(INSERT_REQUEST)
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(MockMvcResultMatchers.status().is5xxServerError)
+    }
+
+    @Test
+    fun `find successful`() {
+        `when`(findCustomerUseCase.findBy("Davide")).thenReturn(
+            Customer(
+                "Davide",
+                30,
+                FavouriteDestinations(listOf(Destination("Milan")))
+            )
+        )
+
+        mvc.perform(
+            MockMvcRequestBuilders.get("/find?name=Davide")
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(MockMvcResultMatchers.status().isOk)
+            .andExpect(MockMvcResultMatchers.content().json(FIND_RESPONSE))
+
+        verify(findCustomerUseCase).findBy("Davide")
+    }
+
 
 }

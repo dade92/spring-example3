@@ -1,6 +1,7 @@
 package webapp
 
 import domain.*
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -18,8 +19,13 @@ class TestResource(
     @PostMapping("/insert")
     fun insert(
         @RequestBody insertCustomerRequest: InsertCustomerRequest
-    ) {
-        insertCustomerUseCase.insert(insertCustomerRequest.toDomain())
+    ): ResponseEntity<*> {
+        return try {
+            insertCustomerUseCase.insert(insertCustomerRequest.toDomain())
+            ResponseEntity.noContent().build<Unit>()
+        } catch (e: Exception) {
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build<Unit>()
+        }
     }
 
     @GetMapping("/find")
