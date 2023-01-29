@@ -1,4 +1,6 @@
-/target
+adapters/target
+domain/target
+webapp/target
 .classpath
 .project
 spring-example1.iml
@@ -8,3 +10,4 @@ spring-example1.iml
 .idea
 .settings
 *.jar
+database
