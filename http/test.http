@@ -1,0 +1,24 @@
+POST http://localhost:8080/insert
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "Sergio",
+    "age": 61,
+    "favouriteDestinations": {
+        "destinations": [
+            {
+                "city": "Milan"
+            },
+            {
+                "city": "London"
+            }
+        ]
+    }
+}
+
+###
+
+GET http://localhost:8080/find?name=Paola
+Content-Type: application/json
+Accept: application/json
