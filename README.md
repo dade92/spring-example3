@@ -18,5 +18,6 @@ by using the .sh script typing: `./build.sh`.
 Run using `docker compose up`.
 
 **HOW TO TEST**
+
 If you want to test the app locally, first run the script `./run-local-environment.sh` and then
 run the application. Then make some local testing
