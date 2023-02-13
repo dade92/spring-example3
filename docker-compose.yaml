@@ -2,6 +2,8 @@ services:
   app:
     image: davide92/spring-example2
     container_name: app
+    depends_on:
+      - mongo
     ports:
       - "8080:8080"
     restart:

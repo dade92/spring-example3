@@ -3,8 +3,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "name": "Sergio",
-    "age": 61,
+    "name": "Carlo",
+    "age": 31,
     "favouriteDestinations": {
         "destinations": [
             {
