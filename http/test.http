@@ -19,6 +19,12 @@ Accept: application/json
 
 ###
 
-GET http://localhost:8080/find?name=Paola
+GET http://localhost:8080/find?name=Sergio
+Content-Type: application/json
+Accept: application/json
+
+###
+
+GET http://localhost:8080/retrieveUsers
 Content-Type: application/json
 Accept: application/json

@@ -23,6 +23,11 @@ class MongoCustomerRepository(
         return mongoTemplate.find(query, MongoCustomer::class.java, COLLECTION_NAME)[0].toDomain()
     }
 
+    override fun getAll(): List<Customer> {
+        val query = Query()
+        return mongoTemplate.find(query, MongoCustomer::class.java, COLLECTION_NAME).map { it.toDomain() }
+    }
+
 }
 
 data class MongoCustomer(
