@@ -1,2 +1,3 @@
 cd local-env
-docker compose --file docker-compose-local.yaml up -d
+
+docker compose up -d
