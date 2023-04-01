@@ -4,6 +4,7 @@ import domain.*
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
@@ -52,11 +53,13 @@ class TestResource(
         )
     }
 
-    @GetMapping("/translations")
-    fun translations(): ResponseEntity<TranslationsResponse> {
+    @GetMapping("/translations/{language}")
+    fun translations(
+        @PathVariable language: String
+    ): ResponseEntity<TranslationsResponse> {
         return ResponseEntity.ok(
             TranslationsResponse(
-                translations = translationsProvider.retrieve("en").data
+                translations = translationsProvider.retrieve(language).data
             )
         )
     }
