@@ -1,9 +1,6 @@
 package webapp
 
-import domain.Customer
-import domain.FavouriteDestinations
-import domain.FindCustomerUseCase
-import domain.InsertCustomerUseCase
+import domain.*
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -15,7 +12,8 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class TestResource(
     private val insertCustomerUseCase: InsertCustomerUseCase,
-    private val findCustomerUseCase: FindCustomerUseCase
+    private val findCustomerUseCase: FindCustomerUseCase,
+    private val translationsProvider: TranslationsProvider
 ) {
 
     @GetMapping("/alive")
@@ -54,6 +52,15 @@ class TestResource(
         )
     }
 
+    @GetMapping("/translations")
+    fun translations(): ResponseEntity<TranslationsResponse> {
+        return ResponseEntity.ok(
+            TranslationsResponse(
+                translations = translationsProvider.retrieve("en").data
+            )
+        )
+    }
+
 }
 
 data class CustomersResponse(
@@ -69,3 +76,7 @@ data class InsertCustomerRequest(
     fun toDomain() = Customer(this.name, age, favouriteDestinations)
 
 }
+
+data class TranslationsResponse(
+    val translations: Map<String, String>
+)

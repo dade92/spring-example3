@@ -15,6 +15,10 @@ class AppConfiguration {
     fun findCustomerUseCase(customerRepository: CustomerRepository): FindCustomerUseCase =
         DefaultFindCustomerUseCase(customerRepository)
 
+    @Bean
+    fun translationsProvider(): TranslationsProvider =
+        StaticTranslationsProvider()
+
 
 
 }
