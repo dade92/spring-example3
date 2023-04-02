@@ -14,12 +14,6 @@ class UserResource(
     private val insertCustomerUseCase: InsertCustomerUseCase,
     private val findCustomerUseCase: FindCustomerUseCase
 ) {
-
-    @GetMapping("/alive")
-    fun alive(): ResponseEntity<*> {
-        return ResponseEntity.ok("")
-    }
-
     @PostMapping("/insert")
     fun insert(
         @RequestBody insertCustomerRequest: InsertCustomerRequest
