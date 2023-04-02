@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
 @WebMvcTest(UserResource::class)
-class TestResourceUser {
+class UserResourceTest {
 
     @Autowired
     private lateinit var mvc: MockMvc
