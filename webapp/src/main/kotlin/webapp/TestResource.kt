@@ -4,7 +4,6 @@ import domain.*
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
@@ -13,8 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class TestResource(
     private val insertCustomerUseCase: InsertCustomerUseCase,
-    private val findCustomerUseCase: FindCustomerUseCase,
-    private val translationsProvider: TranslationsProvider
+    private val findCustomerUseCase: FindCustomerUseCase
 ) {
 
     @GetMapping("/alive")
@@ -49,17 +47,6 @@ class TestResource(
         return ResponseEntity.ok(
             CustomersResponse(
                 findCustomerUseCase.getAll()
-            )
-        )
-    }
-
-    @GetMapping("/translations/{language}")
-    fun translations(
-        @PathVariable language: String
-    ): ResponseEntity<TranslationsResponse> {
-        return ResponseEntity.ok(
-            TranslationsResponse(
-                translations = translationsProvider.retrieve(language).data
             )
         )
     }
