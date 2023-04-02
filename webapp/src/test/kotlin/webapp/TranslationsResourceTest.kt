@@ -27,7 +27,10 @@ class TranslationsResourceTest {
     fun `retrieve translations`() {
         Mockito.`when`(translationsProvider.retrieve("es")).thenReturn(
             Translations(
-                mapOf("key1" to "value1", "key2" to "value2")
+                mapOf(
+                    "key1" to "value1",
+                    "key2" to "value2"
+                )
             )
         )
 
