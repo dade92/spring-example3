@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class TestResource(
+class UserResource(
     private val insertCustomerUseCase: InsertCustomerUseCase,
     private val findCustomerUseCase: FindCustomerUseCase
 ) {

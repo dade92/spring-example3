@@ -13,8 +13,8 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
-@WebMvcTest(TestResource::class)
-class TestResourceTest {
+@WebMvcTest(UserResource::class)
+class TestResourceUser {
 
     @Autowired
     private lateinit var mvc: MockMvc
