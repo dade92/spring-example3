@@ -14,12 +14,14 @@ class TranslationsResource(
     @GetMapping("/translations/{language}")
     fun translations(
         @PathVariable language: String
-    ): ResponseEntity<TranslationsResponse> {
-        return ResponseEntity.ok(
+    ): ResponseEntity<TranslationsResponse> =
+        ResponseEntity.ok(
             TranslationsResponse(
                 translations = translationsProvider.retrieve(language).data
             )
         )
-    }
-
 }
+
+data class TranslationsResponse(
+    val translations: Map<String, String>
+)

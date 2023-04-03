@@ -60,7 +60,3 @@ data class InsertCustomerRequest(
     fun toDomain() = Customer(this.name, age, favouriteDestinations)
 
 }
-
-data class TranslationsResponse(
-    val translations: Map<String, String>
-)
