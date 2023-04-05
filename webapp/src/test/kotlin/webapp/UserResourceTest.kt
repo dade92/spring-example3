@@ -25,9 +25,6 @@ class UserResourceTest {
     @MockBean
     private lateinit var findCustomerUseCase: FindCustomerUseCase
 
-    @MockBean
-    private lateinit var translationsProvider: TranslationsProvider
-
     private val INSERT_REQUEST = Fixtures.readJson("/insertRequest.json")
     private val FIND_RESPONSE = Fixtures.readJson("/findResponse.json")
 
