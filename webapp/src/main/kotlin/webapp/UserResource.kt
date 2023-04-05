@@ -1,9 +1,6 @@
 package webapp
 
-import domain.Customer
-import domain.FavouriteDestinations
-import domain.FindCustomerUseCase
-import domain.InsertCustomerUseCase
+import domain.*
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -13,16 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class TestResource(
+class UserResource(
     private val insertCustomerUseCase: InsertCustomerUseCase,
     private val findCustomerUseCase: FindCustomerUseCase
 ) {
-
-    @GetMapping("/alive")
-    fun alive(): ResponseEntity<*> {
-        return ResponseEntity.ok("")
-    }
-
     @PostMapping("/insert")
     fun insert(
         @RequestBody insertCustomerRequest: InsertCustomerRequest

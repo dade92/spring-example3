@@ -13,8 +13,8 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
-@WebMvcTest(TestResource::class)
-class TestResourceTest {
+@WebMvcTest(UserResource::class)
+class UserResourceTest {
 
     @Autowired
     private lateinit var mvc: MockMvc
@@ -24,6 +24,9 @@ class TestResourceTest {
 
     @MockBean
     private lateinit var findCustomerUseCase: FindCustomerUseCase
+
+    @MockBean
+    private lateinit var translationsProvider: TranslationsProvider
 
     private val INSERT_REQUEST = Fixtures.readJson("/insertRequest.json")
     private val FIND_RESPONSE = Fixtures.readJson("/findResponse.json")
