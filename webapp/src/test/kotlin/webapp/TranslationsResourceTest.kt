@@ -1,16 +1,18 @@
 package webapp
 
 import com.springexample.utils.Fixtures
-import domain.*
+import domain.Translations
+import domain.TranslationsProvider
 import org.junit.jupiter.api.Test
-import org.mockito.Mockito
+import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @WebMvcTest(TranslationsResource::class)
 class TranslationsResourceTest {
@@ -25,7 +27,7 @@ class TranslationsResourceTest {
 
     @Test
     fun `retrieve translations`() {
-        Mockito.`when`(translationsProvider.retrieve("es")).thenReturn(
+        `when`(translationsProvider.retrieve("es")).thenReturn(
             Translations(
                 mapOf(
                     "key1" to "value1",
@@ -37,7 +39,7 @@ class TranslationsResourceTest {
         mvc.perform(
             get("/translations/es")
                 .contentType(MediaType.APPLICATION_JSON)
-        ).andExpect(MockMvcResultMatchers.status().isOk)
-            .andExpect(MockMvcResultMatchers.content().json(TRANSLATIONS_RESPONSE))
+        ).andExpect(status().isOk)
+            .andExpect(content().json(TRANSLATIONS_RESPONSE))
     }
 }
