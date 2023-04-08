@@ -15,8 +15,6 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
-    ports:
-      - "27017:27017"
     volumes:
       - ./local-env/database/db:/data/db
       - ./local-env/database/dev.archive:/Databases/dev.archive
