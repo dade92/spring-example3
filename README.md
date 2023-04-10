@@ -7,7 +7,7 @@ Moreover, it shows usages of other less common technologies (like NoSQL database
 It contains also a Jenkinsfile to allow continuous integration with jenkins, and 
 a Dockerfile that can be used to build a docker image.
 
-## HOW TO BUILD
+## How to build
 
 There are two options:
 
@@ -16,13 +16,13 @@ There are two options:
   usual maven directories
 - Build locally running `mvn clean package`
 
-## HOW TO RUN
+## Run the entire application
 
 Run using `./run.sh` command.
 This will download from dockerhub the images and run everything using docker compose.\
 You can stop shut everything down running the script `./stop.sh`.
 
-## HOW TO TEST
+## Local testing
 
 If you want to test the app locally, first run the script `./run-local-environment.sh`. This starts a 
 mongodb instance and a mongo express interface reachable at `localhost:8081`. 
