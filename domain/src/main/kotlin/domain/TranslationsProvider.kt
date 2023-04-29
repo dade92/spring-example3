@@ -27,6 +27,7 @@ class StaticTranslationsProvider : TranslationsProvider {
                 "appflow.customerData.restart" to "Restart",
                 "appflow.customerData.photo" to "Upload your picture",
                 "appflow.customerData.alertmessage" to "Input must be greater than two letters",
+                "appflow.customerData.noUser" to "Error while loading user information",
             )
         )
 
