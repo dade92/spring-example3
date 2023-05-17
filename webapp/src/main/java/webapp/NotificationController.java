@@ -1,5 +1,7 @@
 package webapp;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class NotificationController {
 
     private final SimpMessagingTemplate template;
+    private Logger logger = LoggerFactory.getLogger(NotificationController.class.getName());
 
     public NotificationController(SimpMessagingTemplate template) {
         this.template = template;
@@ -27,7 +30,7 @@ public class NotificationController {
 
     @MessageMapping("/sendMessage")
     public void receiveMessage(@Payload TextMessageDTO textMessageDTO) {
-        // receive message from client
+        logger.info("Message received from FE: " + textMessageDTO);
     }
 
 
