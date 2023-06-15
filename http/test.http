@@ -34,3 +34,13 @@ Accept: application/json
 GET http://localhost:8080/translations/en
 Content-Type: application/json
 Accept: application/json
+
+###
+
+POST http://localhost:8080/send
+Content-Type: application/json
+Accept: application/json
+
+{
+  "message": "I'm Davide!"
+}
