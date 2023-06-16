@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class NotificationController {
 
     private final SimpMessagingTemplate template;
-    private Logger logger = LoggerFactory.getLogger(NotificationController.class.getName());
+    private final Logger logger = LoggerFactory.getLogger(NotificationController.class.getName());
 
     public NotificationController(SimpMessagingTemplate template) {
         this.template = template;
