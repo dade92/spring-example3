@@ -19,18 +19,28 @@ Accept: application/json
 
 ###
 
-GET http://localhost:8080/find?name=Sergio
+GET {{localhost}}/find?name=Sergio
 Content-Type: application/json
 Accept: application/json
 
 ###
 
-GET http://localhost:8080/retrieveUsers
+GET {{localhost}}/retrieveUsers
 Content-Type: application/json
 Accept: application/json
 
 ###
 
-GET http://localhost:8080/translations/en
+GET {{localhost}}/translations/en
 Content-Type: application/json
 Accept: application/json
+
+###
+
+POST {{localhost}}/send
+Content-Type: application/json
+Accept: application/json
+
+{
+  "message": "I'm Davide!"
+}
