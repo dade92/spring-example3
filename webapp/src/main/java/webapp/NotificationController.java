@@ -30,12 +30,13 @@ public class NotificationController {
 
     @MessageMapping("/sendMessage")
     public void receiveMessage(@Payload TextMessageDTO textMessageDTO) {
-        logger.info("Message received from FE: " + textMessageDTO);
+        logger.info("Message received from FE: " + textMessageDTO.getMessage());
     }
 
 
     @SendTo("/topic/message")
     public TextMessageDTO broadcastMessage(@Payload TextMessageDTO textMessageDTO) {
+        logger.info("Message received: " + textMessageDTO);
         return textMessageDTO;
     }
 
