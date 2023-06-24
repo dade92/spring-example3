@@ -30,7 +30,7 @@ public class NotificationController {
 
     @MessageMapping("/needHelp")
     public void receiveMessage(@Payload TextMessageDTO textMessageDTO) {
-        logger.info("Message received from FE: " + textMessageDTOk.getMessage());
+        logger.info("Message received from FE: " + textMessageDTO.getMessage());
     }
 
 
