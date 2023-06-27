@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class NotificationController {
 
     private final SimpMessagingTemplate template;
-    private Logger logger = LoggerFactory.getLogger(NotificationController.class.getName());
+    private final Logger logger = LoggerFactory.getLogger(NotificationController.class.getName());
 
     public NotificationController(SimpMessagingTemplate template) {
         this.template = template;
@@ -28,14 +28,15 @@ public class NotificationController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @MessageMapping("/sendMessage")
+    @MessageMapping("/needHelp")
     public void receiveMessage(@Payload TextMessageDTO textMessageDTO) {
-        logger.info("Message received from FE: " + textMessageDTO);
+        logger.info("Message received from FE: " + textMessageDTO.getMessage());
     }
 
 
     @SendTo("/topic/message")
     public TextMessageDTO broadcastMessage(@Payload TextMessageDTO textMessageDTO) {
+        logger.info("Message received: " + textMessageDTO);
         return textMessageDTO;
     }
 
