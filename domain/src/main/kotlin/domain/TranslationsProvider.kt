@@ -14,6 +14,10 @@ class StaticTranslationsProvider : TranslationsProvider {
         Translations(
             mapOf(
                 "appflow.customerData.hi" to "Hi",
+                "appflow.needHelp.called" to "Need help called!",
+                "appflow.needHelp.title" to "Need help?",
+                "appflow.customerData.next" to "Next",
+                "appflow.customerData.warning" to "Warning",
                 "appflow.customerData.t_and_c" to "Accept t&c",
                 "appflow.customerData.alias" to "Your alias",
                 "appflow.customerData.actions" to "Actions",
