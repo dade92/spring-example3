@@ -1,5 +1,6 @@
 package webapp
 
+import arrow.core.right
 import com.springexample.utils.Fixtures
 import domain.*
 import org.junit.jupiter.api.Test
@@ -68,7 +69,7 @@ class UserResourceTest {
                 "Davide",
                 30,
                 FavouriteDestinations(listOf(Destination("Milan")))
-            )
+            ).right()
         )
 
         mvc.perform(
