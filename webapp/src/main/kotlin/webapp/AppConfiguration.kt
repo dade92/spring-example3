@@ -19,6 +19,4 @@ class AppConfiguration {
     fun translationsProvider(): TranslationsProvider =
         StaticTranslationsProvider()
 
-
-
 }
