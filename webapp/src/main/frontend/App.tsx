@@ -10,7 +10,7 @@ if(process.env.NODE_ENV === 'development') {
     host = "http://localhost:8080";
     console.log('Development mode active');
 } else if(process.env.NODE_ENV === 'production') {
-    host = "http://davides-MBP:8080";
+    host = "http://Davides-MBP:8080";
 }
 
 export const App: React.FC<Props> = ({isRunning}) => {
