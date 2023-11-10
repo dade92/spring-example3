@@ -27,7 +27,7 @@
     "ts-loader": "9.5.0"
   },
   "scripts": {
-    "watch": "webpack --watch",
+    "watch": "webpack --watch --config webpack.config.js",
     "test": "jest --passWithNoTests --silent --coverage"
   },
   "eslintConfig": {
