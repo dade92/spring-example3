@@ -14,7 +14,12 @@ public class HomeController {
     }
 
     @GetMapping("/api/alive")
-    public ResponseEntity alive() {
-        return ResponseEntity.ok().build();
+    public ResponseEntity<AliveResponse> alive() {
+        return ResponseEntity.ok(new AliveResponse(true, "Message"));
     }
 }
+
+record AliveResponse(
+    boolean alive,
+    String message
+) {}
