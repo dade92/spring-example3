@@ -1,28 +1,18 @@
 import React, {useEffect, useState} from "react";
 import {Button} from "@mui/material";
+import {staticRestClient} from "./logic/RestClient";
 
 interface Props {
     isRunning: boolean
-}
-
-let host = '';
-
-if(process.env.NODE_ENV === 'development') {
-    host = "http://localhost:8080";
-    console.log('Development mode active');
-} else if(process.env.NODE_ENV === 'production') {
-    host = "http://Davides-MBP:8080";
 }
 
 export const App: React.FC<Props> = ({isRunning}) => {
     const [alive, setAlive] = useState<boolean>(false);
 
     useEffect(() => {
-        fetch(`${host}/api/alive`)
-            .then((response) => {
-                if(response.status == 200) {
-                    setAlive(true);
-                }
+        staticRestClient.get('/alive')
+            .then(() => {
+                setAlive(true);
             })
             .catch(() => console.log('error calling API'));
     }, []);
