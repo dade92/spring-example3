@@ -13,7 +13,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <name>adapters</name>
+    <name>domain</name>
 
     <properties>
         <h2.version>2.1.214</h2.version>

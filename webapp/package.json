@@ -27,7 +27,7 @@
     "ts-loader": "9.5.0"
   },
   "scripts": {
-    "watch": "webpack --watch -d --output ./target/classes/static/built/bundle.js",
+    "watch": "webpack --watch",
     "test": "jest --passWithNoTests --silent --coverage"
   },
   "eslintConfig": {
