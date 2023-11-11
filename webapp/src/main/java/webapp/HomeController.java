@@ -13,13 +13,4 @@ public class HomeController {
         return "index.html"; // <3>
     }
 
-    @GetMapping("/api/alive")
-    public ResponseEntity<AliveResponse> alive() {
-        return ResponseEntity.ok(new AliveResponse(true, "Some random message"));
-    }
 }
-
-record AliveResponse(
-    boolean alive,
-    String message
-) {}
