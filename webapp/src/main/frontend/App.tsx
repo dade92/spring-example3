@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {Button, LinearProgress, Typography} from "@mui/material";
-import {restAliveConfigurationProvider} from "./logic/AliveConfigProvider";
+import {AliveConfigProvider, restAliveConfigurationProvider} from "./logic/AliveConfigProvider";
 import styled from "styled-components";
 import {server} from "./server/Server";
 
 interface Props {
+    aliveConfigProvider: AliveConfigProvider
 }
 
 const Wrapper = styled.div`
@@ -23,11 +24,11 @@ if (process.env.NODE_ENV === 'development' && process.env.REACT_APP_STAGE === 'd
     server();
 }
 
-export const App: React.FC<Props> = () => {
+export const App: React.FC<Props> = ({aliveConfigProvider}) => {
     const [alive, setAlive] = useState<boolean>(false);
 
     useEffect(() => {
-        restAliveConfigurationProvider()
+        aliveConfigProvider()
             .then((aliveConfig) => {
                 setAlive(aliveConfig.alive);
             })
@@ -38,7 +39,7 @@ export const App: React.FC<Props> = () => {
     return (
         <Wrapper>
             {alive ? <Typography>server up and running!</Typography> : <LinearProgress/>}
-            <Button variant="contained" onClick={() => console.log('clicked')}>Click me</Button>
+            <Button data-testid={'button'} variant="contained" onClick={() => console.log('clicked')}>Click me</Button>
         </Wrapper>
     )
 }
