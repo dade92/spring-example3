@@ -5,7 +5,7 @@ It follows [hexagonal architecture principles](https://netflixtechblog.com/ready
 It contains both backend and frontend applications. FE is done with React + webpack to bundle, while BE is done with
 spring boot
 
-## How to build
+## How to build (FE pointing to BE)
 
 - Build for development: inside the webapp application, run `npm run watch`: this will generate the js executables inside
   the resources/static folder. Then launch the application using IDEA.
