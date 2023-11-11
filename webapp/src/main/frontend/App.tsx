@@ -31,8 +31,10 @@ export const App: React.FC<Props> = () => {
     }, []);
 
 
-    return <Wrapper>
-        {alive ? <Typography>server up and running!</Typography> : <LinearProgress/>}
-        <Button variant="contained" onClick={() => console.log('clicked')}>Click me</Button>
-    </Wrapper>
+    return (
+        <Wrapper>
+            {alive ? <Typography>server up and running!</Typography> : <LinearProgress/>}
+            <Button variant="contained" onClick={() => console.log('clicked')}>Click me</Button>
+        </Wrapper>
+    )
 }

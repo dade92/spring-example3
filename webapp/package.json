@@ -27,7 +27,7 @@
   },
   "scripts": {
     "dev": "REACT_APP_STAGE=dev webpack serve",
-    "watch": "REACT_APP_STAGE=local webpack --watch --config webpack.config.js",
+    "watch": "rm -rf ./target && REACT_APP_STAGE=local webpack --watch --config webpack.config.js",
     "test": "jest --passWithNoTests --silent --coverage"
   },
   "eslintConfig": {

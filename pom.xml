@@ -60,11 +60,6 @@
             <artifactId>kotlin-maven-allopen</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-        </dependency>
         <!--Testing libraries-->
         <!--TODO for some unknown reason version 5.9.0 of JUnit5 does not work! -->
         <dependency>
