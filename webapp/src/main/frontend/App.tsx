@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Button} from "@mui/material";
+import {Button, Typography} from "@mui/material";
 import {restAliveConfigurationProvider} from "./logic/AliveConfigProvider";
 import styled from "styled-components";
 
@@ -10,6 +10,9 @@ interface Props {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin: auto;
+  width: 50%;
+  row-gap: 16px;
 `
 
 export const App: React.FC<Props> = ({isRunning}) => {
@@ -29,6 +32,6 @@ export const App: React.FC<Props> = ({isRunning}) => {
     return <Wrapper>
         {alive && <div><span>server alive!</span></div>}
         <Button variant="contained" onClick={() => console.log('clicked')}>Click me</Button>
-        <span>{message}</span>
+        <Typography variant={"body1"}>{message}</Typography>
     </Wrapper>
 }

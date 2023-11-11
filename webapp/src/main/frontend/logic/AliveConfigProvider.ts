@@ -7,12 +7,11 @@ export interface AliveConfiguration {
 
 export type AliveConfigProvider = () => Promise<AliveConfiguration>
 
-export const restAliveConfigurationProvider: AliveConfigProvider = () => {
-    return staticRestClient.get<AliveConfiguration>('/alive')
-        .then((aliveConfig) => {
-            return aliveConfig
-        }).catch(() => {
+export const restAliveConfigurationProvider: AliveConfigProvider = async () => {
+    try {
+        return await staticRestClient.get<AliveConfiguration>('/alive')
+    } catch (e) {
         console.log('Error retrieving config');
         return Promise.resolve({alive: false, message: ''})
-    })
+    }
 }
