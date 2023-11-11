@@ -17,16 +17,16 @@
     "miragejs": "^0.1.47",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-material-ui-carousel": "^3.4.2",
     "react-scripts": "5.0.0",
     "react-stomp-hooks": "^2.1.0",
     "styled-components": "^5.3.6",
     "ts-jest": "^27.1.3",
+    "ts-loader": "9.5.0",
     "typescript": "^4.6.3",
-    "web-vitals": "^2.1.4",
-    "ts-loader": "9.5.0"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "dev": "webpack serve",
     "watch": "webpack --watch --config webpack.config.js",
     "test": "jest --passWithNoTests --silent --coverage"
   },
@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.25",
+    "html-webpack-plugin": "^5.5.3",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
   },

@@ -41,5 +41,6 @@ export const App: React.FC<Props> = ({isRunning}) => {
         <Typography variant={"body1"}>check</Typography>
         <Typography variant={"body1"}>check</Typography>
         <Typography variant={"body1"}>check</Typography>
+        <Typography variant={"body1"}>check everything ok</Typography>
     </Wrapper>
 }
