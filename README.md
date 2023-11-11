@@ -1,6 +1,6 @@
 # SPRING EXAMPLE
 
-Sample maven project for spring boot applications using java and kotlin languages.
+Sample maven project for spring boot applications using java language.
 It follows [hexagonal architecture principles](https://netflixtechblog.com/ready-for-changes-with-hexagonal-architecture-b315ec967749).
 It contains both backend and frontend applications. FE is done with React + webpack to bundle, while BE is done with
 spring boot
@@ -15,7 +15,7 @@ spring boot
 ## FE development only
 
 If you want to just see the UI, go inside the webapp folder and launch `npm run dev`. This will use webpack to launch a 
-web server and put inside your js code.
+web server and put inside your js code. MirageJs is used to mock rest calls. 
 
 ### CI/CD
 

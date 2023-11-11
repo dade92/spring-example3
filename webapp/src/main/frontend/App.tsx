@@ -4,9 +4,7 @@ import {restAliveConfigurationProvider} from "./logic/AliveConfigProvider";
 import styled from "styled-components";
 import {server} from "./server/Server";
 
-interface Props {
-    isRunning: boolean
-}
+interface Props {}
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,11 +14,11 @@ const Wrapper = styled.div`
   row-gap: 16px;
 `
 
-if(process.env.NODE_ENV === 'development') {
+if(process.env.NODE_ENV === 'development' && process.env.REACT_APP_STAGE === 'dev') {
     server();
 }
 
-export const App: React.FC<Props> = ({isRunning}) => {
+export const App: React.FC<Props> = () => {
     const [alive, setAlive] = useState<boolean>(false);
     const [message, setMessage] = useState<string>('Error');
 

@@ -1,5 +1,9 @@
 var path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+
+
+const REACT_APP_STAGE = process.env.REACT_APP_STAGE
 
 module.exports = {
     entry: './src/main/frontend/Index.tsx',
@@ -14,6 +18,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/main/resources/static/index.html',
             filename: 'index.html',
+        }),
+        new webpack.DefinePlugin({
+            'process.env.REACT_APP_STAGE': JSON.stringify(process.env.REACT_APP_STAGE),
         }),
     ],
     resolve: {
