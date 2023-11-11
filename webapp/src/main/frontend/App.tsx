@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Button, Typography} from "@mui/material";
 import {restAliveConfigurationProvider} from "./logic/AliveConfigProvider";
 import styled from "styled-components";
+import {server} from "./server/Server";
 
 interface Props {
     isRunning: boolean
@@ -14,6 +15,10 @@ const Wrapper = styled.div`
   width: 50%;
   row-gap: 16px;
 `
+
+if(process.env.NODE_ENV === 'development') {
+    server();
+}
 
 export const App: React.FC<Props> = ({isRunning}) => {
     const [alive, setAlive] = useState<boolean>(false);
