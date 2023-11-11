@@ -33,5 +33,13 @@ export const App: React.FC<Props> = ({isRunning}) => {
         {alive && <div><span>server alive!</span></div>}
         <Button variant="contained" onClick={() => console.log('clicked')}>Click me</Button>
         <Typography variant={"body1"}>{message}</Typography>
+        <Typography variant={"body1"}>another message</Typography>
+        <Typography variant={"body1"}>another message</Typography>
+        <Typography variant={"body1"}>another message</Typography>
+        <Typography variant={"body1"}>another message</Typography>
+        <Typography variant={"body1"}>check</Typography>
+        <Typography variant={"body1"}>check</Typography>
+        <Typography variant={"body1"}>check</Typography>
+        <Typography variant={"body1"}>check</Typography>
     </Wrapper>
 }

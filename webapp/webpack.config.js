@@ -7,7 +7,7 @@ module.exports = {
     mode: 'development',
     output: {
         path: __dirname,
-        filename: './src/main/resources/static/built/bundle.js',
+        filename: './src/main/resources/static/bundle.js',
     },
     resolve: {
         // Add `.ts` and `.tsx` as a resolvable extension.

@@ -1,0 +1,7 @@
+spring:
+  devtools:
+    restart:
+      enabled: true
+#  web:
+#    resources:
+#      static-locations: classpath:/resources/static
