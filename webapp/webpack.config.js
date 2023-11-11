@@ -10,7 +10,12 @@ module.exports = {
         path: __dirname,
         filename: './src/main/resources/static/bundle.js',
     },
-    plugins: [new HtmlWebpackPlugin()],
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/main/resources/static/index.html',
+            filename: 'index.html',
+        }),
+    ],
     resolve: {
         // Add `.ts` and `.tsx` as a resolvable extension.
         extensions: [".ts", ".tsx", ".js"]
@@ -23,7 +28,7 @@ module.exports = {
     },
     devServer: {
         static: {
-            directory: path.join(__dirname, '/src/main/resources/static')
+            directory: path.join(__dirname, '/')
         }
     }
 };
