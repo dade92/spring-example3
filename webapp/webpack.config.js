@@ -14,26 +14,19 @@ module.exports = {
     cache: true,
     mode: 'development',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: __dirname,
         filename: './src/main/resources/static/[name].bundle.js',
-    },
-    optimization: {
-        splitChunks: {
-            chunks: 'all'
-        },
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/main/resources/static/index.html',
             filename: 'index.html',
             chunks: ['index'],
-            inject: true,
         }),
         new HtmlWebpackPlugin({
             template: './src/main/resources/static/configuration.html',
             filename: 'configuration.html',
             chunks: ['configuration'],
-            inject: true,
         }),
         new webpack.DefinePlugin({
             'process.env.REACT_APP_STAGE': JSON.stringify(process.env.REACT_APP_STAGE),
@@ -50,7 +43,7 @@ module.exports = {
         ]
     },
     devServer: {
-        static: path.join(__dirname, 'dist'), // Use 'static' instead of 'contentBase'
+        static: __dirname,
         port: 8080,
         open: true,
     },
