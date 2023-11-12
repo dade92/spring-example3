@@ -5,17 +5,23 @@ It follows [hexagonal architecture principles](https://netflixtechblog.com/ready
 It contains both backend and frontend applications. FE is done with React + webpack to bundle, while BE is done with
 spring boot
 
-## How to build (FE pointing to BE)
+## How to build 
+
+### FE development only
+
+If you want to just see the UI, go inside the webapp folder and launch `npm run dev`. This will use webpack to launch a
+web server and put inside your js code. MirageJs is used to mock rest calls.
+
+### FE pointing to BE
 
 - Build for development: inside the webapp application, run `npm run watch`: this will generate the js executables inside
   the resources/static folder. Then launch the application using IDEA.
 - Build for production (not useful for development, is something the pipeline will take care of) run `mvn clean package`
   and then launch the jar inside the webapp/target folder
 
-## FE development only
-
-If you want to just see the UI, go inside the webapp folder and launch `npm run dev`. This will use webpack to launch a 
-web server and put inside your js code. MirageJs is used to mock rest calls. 
+IMPORTANT: at the moment, `mvn clean package` bundles the FE application to run in "production" environment only. So,
+if you run it and then try to run the application locally, you will see the application poiting to prod environment
+(taken from the /target folder built before using maven).
 
 ### CI/CD
 
