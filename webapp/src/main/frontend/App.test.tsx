@@ -1,14 +1,31 @@
-import {render, screen} from "@testing-library/react";
+import {render, screen, waitFor} from "@testing-library/react";
 import {App} from "./App";
 import '@testing-library/jest-dom';
 
 describe('App', () => {
-    it('renders correctly', () => {
+    it('renders correctly when server is alive', () => {
         const aliveConfigProvider =
             jest.fn(() => Promise.resolve({alive: true, message: ""}));
 
         render(<App aliveConfigProvider={aliveConfigProvider}/>);
 
-        expect(screen.getByTestId('button')).toBeVisible();
+        waitFor(() => {
+            expect(screen.getByTestId('button')).toBeVisible();
+            expect(screen.getByTestId('up-and-running')).toBeVisible();
+            expect(screen.queryByTestId('progress')).not.toBeVisible();
+        });
+    })
+
+    it('renders correctly when server is not alive', () => {
+        const aliveConfigProvider =
+            jest.fn(() => Promise.resolve({alive: false, message: ""}));
+
+        render(<App aliveConfigProvider={aliveConfigProvider}/>);
+
+        waitFor(() => {
+            expect(screen.getByTestId('button')).toBeVisible();
+            expect(screen.queryByTestId('up-and-running')).not.toBeVisible();
+            expect(screen.getByTestId('progress')).toBeVisible();
+        });
     })
 })

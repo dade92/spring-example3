@@ -38,7 +38,8 @@ export const App: React.FC<Props> = ({aliveConfigProvider}) => {
 
     return (
         <Wrapper>
-            {alive ? <Typography>server up and running!</Typography> : <LinearProgress/>}
+            {alive ? <Typography data-testid={'up-and-running'}>server up and running!</Typography> :
+                <LinearProgress data-testid={'progress'}/>}
             <Button data-testid={'button'} variant="contained" onClick={() => console.log('clicked')}>Click me</Button>
         </Wrapper>
     )
