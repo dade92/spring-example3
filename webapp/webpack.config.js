@@ -6,18 +6,34 @@ const webpack = require('webpack');
 const REACT_APP_STAGE = process.env.REACT_APP_STAGE
 
 module.exports = {
-    entry: './src/main/frontend/Index.tsx',
+    entry: {
+        index: './src/main/frontend/Index.tsx',
+        configuration: './src/main/frontend/Configuration.tsx'
+    },
     devtool: 'source-map',
     cache: true,
     mode: 'development',
     output: {
-        path: __dirname,
-        filename: './src/main/resources/static/bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+        filename: './src/main/resources/static/[name].bundle.js',
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        },
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/main/resources/static/index.html',
             filename: 'index.html',
+            chunks: ['index'],
+            inject: true,
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/main/resources/static/configuration.html',
+            filename: 'configuration.html',
+            chunks: ['configuration'],
+            inject: true,
         }),
         new webpack.DefinePlugin({
             'process.env.REACT_APP_STAGE': JSON.stringify(process.env.REACT_APP_STAGE),
@@ -34,8 +50,8 @@ module.exports = {
         ]
     },
     devServer: {
-        static: {
-            directory: path.join(__dirname, '/')
-        }
-    }
+        static: path.join(__dirname, 'dist'), // Use 'static' instead of 'contentBase'
+        port: 8080,
+        open: true,
+    },
 };

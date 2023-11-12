@@ -1,13 +1,16 @@
 var path = require('path');
 
 module.exports = {
-    entry: './src/main/frontend/Index.tsx',
+    entry: {
+        index: './src/main/frontend/Index.tsx',
+        configuration: './src/main/frontend/Configuration.tsx'
+    },
     devtool: 'source-map',
     cache: true,
     mode: 'production',
     output: {
         path: __dirname,
-        filename: './src/main/resources/static/bundle.js',
+        filename: './src/main/resources/static/[name].bundle.js',
     },
     resolve: {
         // Add `.ts` and `.tsx` as a resolvable extension.

@@ -13,4 +13,13 @@ public class HomeController {
         return "index.html"; // <3>
     }
 
+    @RequestMapping(value = "/configuration") // <2>
+    public String configuration() {
+        return "configuration.html"; // <3>
+    }
+
+    @RequestMapping(value = "/config/configuration") // <2>
+    public String configurationUnderFolder() {
+        return "config/configuration.html"; // <3>
+    }
 }
