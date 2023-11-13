@@ -1,5 +1,4 @@
 var path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 
@@ -31,10 +30,5 @@ module.exports = {
             // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
             { test: /\.tsx?$/, loader: "ts-loader" }
         ]
-    },
-    devServer: {
-        static: __dirname,
-        port: 8080,
-        open: true,
     },
 };
