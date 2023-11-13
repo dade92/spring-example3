@@ -18,6 +18,16 @@ module.exports = {
         filename: './src/main/resources/static/[name].bundle.js',
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/main/resources/static/index.html',
+            filename: 'index.html',
+            chunks: ['index'],
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/main/resources/static/configuration.html',
+            filename: 'configuration.html',
+            chunks: ['configuration'],
+        }),
         new webpack.DefinePlugin({
             'process.env.REACT_APP_STAGE': JSON.stringify(process.env.REACT_APP_STAGE),
         }),
