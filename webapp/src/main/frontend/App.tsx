@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Button, LinearProgress, Typography} from "@mui/material";
-import {AliveConfigProvider, restAliveConfigurationProvider} from "./logic/AliveConfigProvider";
+import {AliveConfigProvider} from "./logic/AliveConfigProvider";
 import styled from "styled-components";
 import {server} from "./server/Server";
 
