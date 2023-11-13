@@ -1,6 +1,5 @@
 import {render, screen, waitFor} from "@testing-library/react";
 import {App} from "./App";
-import '@testing-library/jest-dom';
 
 describe('App', () => {
     it('renders correctly when server is alive', () => {
