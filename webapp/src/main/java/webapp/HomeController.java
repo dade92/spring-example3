@@ -8,11 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class HomeController {
-    @RequestMapping(value = "/") // <2>
-    public String index() {
-        return "index.html"; // <3>
-    }
-
     @RequestMapping(value = "/configuration") // <2>
     public String configuration() {
         return "configuration.html"; // <3>
