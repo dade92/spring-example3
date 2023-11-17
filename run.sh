@@ -1,4 +1,7 @@
 echo "Pulling the latest images..."
+
+docker compose up -d db
+
 docker compose pull app
 
 echo "Starting app..."
