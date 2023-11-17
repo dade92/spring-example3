@@ -3,7 +3,7 @@
 Sample maven project for spring boot applications using java language.
 It follows [hexagonal architecture principles](https://netflixtechblog.com/ready-for-changes-with-hexagonal-architecture-b315ec967749).
 It contains both backend and frontend applications. FE is done with React + webpack to bundle, while BE is done with
-spring boot
+spring boot.
 
 ## How to build 
 
@@ -25,8 +25,8 @@ if you run it and then try to run the application locally, you will see the appl
 
 ### CI/CD
 
-TBD
+The project is integrated with Github actions. You can find the configuration inside the .github folder.
 
 ## Run the entire application
 
-TBD
+Run the script ./run.sh. This will run the app with the production configuration.
