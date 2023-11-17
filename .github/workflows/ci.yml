@@ -26,13 +26,17 @@ jobs:
         distribution: 'zulu'
         cache: maven
 
-    - 
+    -
       name: Build
       run: mvn -B package -DskipTests --file pom.xml
 
     -
-      name: Test
-      run: mvn verify
+      name: Test backend
+      run: mvn verify -Dskip.webpack -Dskip.npm
+
+    -
+      name: Test frontend
+      run: cd webapp && npm run test
 
     -
         name: Login to Docker Hub
