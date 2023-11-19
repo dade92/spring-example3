@@ -23,6 +23,10 @@ IMPORTANT: at the moment, `mvn clean package` bundles the FE application to run 
 if you run it and then try to run the application locally, you will see the application poiting to prod environment
 (taken from the /target folder built before using maven).
 
+### Local environment
+BE needs a database to run. For local development, you can run the script `run-local-environment.sh` to start a fresh
+local Mysql instance with sample data inside. You can access it at `localhost:3306`.
+
 ### CI/CD
 
 The project is integrated with Github actions. You can find the configuration inside the .github folder.
