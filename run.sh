@@ -1,3 +1,7 @@
+echo "Setting up environment"
+cp ./local-env/createSchema.sql ./deploy
+cp ./local-env/Dockerfile ./deploy
+
 echo "Pulling the latest images..."
 
 docker compose up -d db
