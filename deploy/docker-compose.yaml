@@ -7,7 +7,7 @@ services:
     restart:
       always
   db:
-    build: ./deploy
+    build: .
     container_name: db
 #    If you want to access "prod" database
 #    ports:
