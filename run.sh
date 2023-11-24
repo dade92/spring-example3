@@ -1,5 +1,5 @@
 echo "Setting up environment"
-cp ./local-env/createSchema.sql ./deploy
+cp ./local-env/1.sql ./deploy
 cp ./local-env/Dockerfile ./deploy
 
 cd deploy
