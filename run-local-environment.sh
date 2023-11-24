@@ -1,3 +1,3 @@
 cd local-env
 
-docker compose up -d
+docker compose up -d --build
