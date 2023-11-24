@@ -1,3 +1,3 @@
-cd deploy
+cd local-env
 
 docker compose down

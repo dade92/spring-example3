@@ -1,4 +1,6 @@
 spring:
-  devtools:
-    restart:
-      enabled: true
+  datasource:
+    spring-example:
+      url: jdbc:mysql://localhost:3306/spring-example3?serverTimezone=UTC
+      username: root
+      password: password

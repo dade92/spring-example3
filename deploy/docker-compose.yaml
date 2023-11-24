@@ -1,0 +1,19 @@
+services:
+  app:
+    image: davide92/spring-example3
+    container_name: app
+    ports:
+      - "8080:8080"
+    restart:
+      always
+  db:
+    build: .
+    container_name: db
+#    If you want to access "prod" database
+#    ports:
+#      - "3306:3306"
+    volumes:
+      - spring-example3-data:/var/lib/mysql
+volumes:
+  spring-example3-data:
+    driver: local
