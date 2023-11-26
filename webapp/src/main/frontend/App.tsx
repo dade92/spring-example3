@@ -4,9 +4,12 @@ import {AliveConfigProvider} from "./logic/AliveConfigProvider";
 import styled from "styled-components";
 import {server} from "./server/Server";
 import {Loader} from "./Loader";
+import {AppEvent, EventsRetriever} from "./logic/EventDataRetriever";
+import {EventList} from "./EventList";
 
 interface Props {
     aliveConfigProvider: AliveConfigProvider
+    eventsRetriever: EventsRetriever
 }
 
 const Wrapper = styled.div`
@@ -25,9 +28,12 @@ if (process.env.NODE_ENV === 'development' && process.env.REACT_APP_STAGE === 'd
     server();
 }
 
-export const App: React.FC<Props> = ({aliveConfigProvider}) => {
+export const App: React.FC<Props> = ({aliveConfigProvider, eventsRetriever}) => {
     const [alive, setAlive] = useState<boolean>(false);
     const [checked, setChecked] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [events, setEvents] = useState<AppEvent[]>([]);
+
 
     useEffect(() => {
         aliveConfigProvider()
@@ -37,6 +43,17 @@ export const App: React.FC<Props> = ({aliveConfigProvider}) => {
             .catch(() => console.log('error calling API'));
     }, []);
 
+    const retrieveEvents = () => {
+        setLoading(true);
+        eventsRetriever()
+            .then((events) => {
+                setEvents(events.events);
+                setLoading(false);
+            })
+            .catch(() => {
+                console.log('Error retrieving events');
+            })
+    }
 
     return (
         <Wrapper>
@@ -44,10 +61,11 @@ export const App: React.FC<Props> = ({aliveConfigProvider}) => {
                 <LinearProgress data-testid={'progress'}/>}
             <Button data-testid={'button'}
                     variant="contained"
-                    onClick={() => console.log('clicked')}
+                    onClick={retrieveEvents}
                     disabled={!checked}>Click me</Button>
             <Switch checked={checked} onChange={() => setChecked(!checked)}/>
-            <Loader/>
+            {loading && <Loader/>}
+            {events.length > 0 && <EventList events={events}/>}
         </Wrapper>
     )
 }

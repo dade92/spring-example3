@@ -13,7 +13,7 @@ export const Loader: React.FC = () => {
                     },
                 }}
                 size={40}
-                thickness={4}
+                thickness={5}
             />
         </>
     )

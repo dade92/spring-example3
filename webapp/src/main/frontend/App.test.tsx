@@ -6,7 +6,7 @@ describe('App', () => {
         const aliveConfigProvider =
             jest.fn(() => Promise.resolve({alive: true, message: ""}));
 
-        render(<App aliveConfigProvider={aliveConfigProvider}/>);
+        render(<App aliveConfigProvider={aliveConfigProvider} eventsRetriever={jest.fn(() => Promise.resolve({events: []}))}/>);
 
         waitFor(() => {
             expect(screen.getByTestId('button')).toBeVisible();
@@ -19,7 +19,7 @@ describe('App', () => {
         const aliveConfigProvider =
             jest.fn(() => Promise.resolve({alive: false, message: ""}));
 
-        render(<App aliveConfigProvider={aliveConfigProvider}/>);
+        render(<App aliveConfigProvider={aliveConfigProvider} eventsRetriever={jest.fn(() => Promise.reject())}/>);
 
         waitFor(() => {
             expect(screen.getByTestId('button')).toBeVisible();
