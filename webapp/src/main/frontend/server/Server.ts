@@ -8,10 +8,10 @@ const aliveResponse = {
 const eventsResponse = {
     events: [
         {
-            message: 'first message'
+            message: 'first event'
         },
         {
-            message: 'second message'
+            message: 'second event'
         }
     ]
 };

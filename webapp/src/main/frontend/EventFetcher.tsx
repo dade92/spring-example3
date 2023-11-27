@@ -32,7 +32,7 @@ export const EventFetcher: FC<Props> = ({eventsRetriever, onError}) => {
             <Button data-testid={'fetcher-button'}
                     variant="contained"
                     onClick={retrieveEvents}
-                    disabled={!checked}>Click me</Button>
+                    disabled={!checked}>Load events</Button>
             <Switch checked={checked} onChange={() => setChecked(!checked)}/>
             {loading && <Loader/>}
             {events.length > 0 && <EventList events={events}/>}

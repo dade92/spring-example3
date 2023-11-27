@@ -27,10 +27,6 @@ const Wrapper = styled.div`
   row-gap: 16px;
 `
 
-if (process.env.NODE_ENV === 'development' && process.env.REACT_APP_STAGE === 'dev') {
-    server();
-}
-
 export const ControlPanel: React.FC<Props> = ({aliveConfigProvider, eventsRetriever, onError}) => {
     const [alive, setAlive] = useState<boolean>(false);
 
