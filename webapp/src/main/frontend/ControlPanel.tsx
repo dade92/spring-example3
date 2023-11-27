@@ -40,8 +40,10 @@ export const ControlPanel: React.FC<Props> = ({aliveConfigProvider, eventsRetrie
 
     return (
         <Wrapper>
-            {alive ? <Typography data-testid={'up-and-running'}>server up and running!</Typography> :
-                <LinearProgress data-testid={'progress'}/>}
+            {alive ?
+                <Typography data-testid={'up-and-running'}>server up and running!</Typography> :
+                <LinearProgress data-testid={'progress'}/>
+            }
             <EventFetcher eventsRetriever={eventsRetriever} onError={onError}/>
         </Wrapper>
     )
