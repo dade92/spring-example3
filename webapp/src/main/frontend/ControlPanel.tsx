@@ -7,6 +7,7 @@ import {Loader} from "./Loader";
 import {AppEvent, EventsRetriever} from "./logic/EventDataRetriever";
 import {EventList} from "./EventList";
 import {ErrorMessage} from "./ErrorMessage";
+import {EventFetcher} from "./EventFetcher";
 
 interface Props {
     aliveConfigProvider: AliveConfigProvider
@@ -32,9 +33,6 @@ if (process.env.NODE_ENV === 'development' && process.env.REACT_APP_STAGE === 'd
 
 export const ControlPanel: React.FC<Props> = ({aliveConfigProvider, eventsRetriever, onError}) => {
     const [alive, setAlive] = useState<boolean>(false);
-    const [checked, setChecked] = useState<boolean>(false);
-    const [loading, setLoading] = useState<boolean>(false);
-    const [events, setEvents] = useState<AppEvent[]>([]);
 
     useEffect(() => {
         aliveConfigProvider()
@@ -44,30 +42,11 @@ export const ControlPanel: React.FC<Props> = ({aliveConfigProvider, eventsRetrie
             .catch(() => console.log('error calling API'));
     }, []);
 
-    const retrieveEvents = () => {
-        setLoading(true);
-        eventsRetriever()
-            .then((events) => {
-                setEvents(events.events);
-                setLoading(false);
-            })
-            .catch(() => {
-                onError();
-                setLoading(false);
-            })
-    }
-
     return (
         <Wrapper>
             {alive ? <Typography data-testid={'up-and-running'}>server up and running!</Typography> :
                 <LinearProgress data-testid={'progress'}/>}
-            <Button data-testid={'button'}
-                    variant="contained"
-                    onClick={retrieveEvents}
-                    disabled={!checked}>Click me</Button>
-            <Switch checked={checked} onChange={() => setChecked(!checked)}/>
-            {loading && <Loader/>}
-            {events.length > 0 && <EventList events={events}/>}
+            <EventFetcher eventsRetriever={eventsRetriever} onError={onError}/>
         </Wrapper>
     )
 }
