@@ -9,7 +9,7 @@ describe('ControlPanel', () => {
         render(<ControlPanel aliveConfigProvider={aliveConfigProvider} eventsRetriever={jest.fn(() => Promise.resolve({events: []}))} onError={jest.fn()}/>);
 
         waitFor(() => {
-            expect(screen.getByTestId('button')).toBeVisible();
+            expect(screen.getByTestId('fetcher-button')).toBeVisible();
             expect(screen.getByTestId('up-and-running')).toBeVisible();
             expect(screen.queryByTestId('progress')).not.toBeVisible();
         });
@@ -22,7 +22,7 @@ describe('ControlPanel', () => {
         render(<ControlPanel aliveConfigProvider={aliveConfigProvider} eventsRetriever={jest.fn(() => Promise.reject())} onError={jest.fn()}/>);
 
         waitFor(() => {
-            expect(screen.getByTestId('button')).toBeVisible();
+            expect(screen.getByTestId('fetcher-button')).toBeVisible();
             expect(screen.queryByTestId('up-and-running')).not.toBeVisible();
             expect(screen.getByTestId('progress')).toBeVisible();
         });

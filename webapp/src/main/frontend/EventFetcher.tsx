@@ -29,7 +29,7 @@ export const EventFetcher: FC<Props> = ({eventsRetriever, onError}) => {
 
     return (
         <>
-            <Button data-testid={'button'}
+            <Button data-testid={'fetcher-button'}
                     variant="contained"
                     onClick={retrieveEvents}
                     disabled={!checked}>Click me</Button>
