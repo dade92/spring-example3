@@ -1,77 +1,18 @@
-import React, {useEffect, useState} from "react";
-import {Button, LinearProgress, Switch, Typography} from "@mui/material";
-import {AliveConfigProvider} from "./logic/AliveConfigProvider";
-import styled from "styled-components";
-import {server} from "./server/Server";
-import {Loader} from "./Loader";
-import {AppEvent, EventsRetriever} from "./logic/EventDataRetriever";
-import {EventList} from "./EventList";
+import React, {FC, useState} from "react";
+import {ControlPanel} from "./ControlPanel";
+import {restAliveConfigurationProvider} from "./logic/AliveConfigProvider";
+import {restEventsRetriever} from "./logic/EventDataRetriever";
 import {ErrorMessage} from "./ErrorMessage";
 
-interface Props {
-    aliveConfigProvider: AliveConfigProvider
-    eventsRetriever: EventsRetriever
-}
-
-const Wrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  row-gap: 16px;
-`
-
-if (process.env.NODE_ENV === 'development' && process.env.REACT_APP_STAGE === 'dev') {
-    server();
-}
-
-export const App: React.FC<Props> = ({aliveConfigProvider, eventsRetriever}) => {
-    const [alive, setAlive] = useState<boolean>(false);
-    const [checked, setChecked] = useState<boolean>(false);
-    const [loading, setLoading] = useState<boolean>(false);
-    const [events, setEvents] = useState<AppEvent[]>([]);
+export const App: FC = () => {
     const [retrieveError, setRetrieveError] = useState<boolean>(false);
 
-
-    useEffect(() => {
-        aliveConfigProvider()
-            .then((aliveConfig) => {
-                setAlive(aliveConfig.alive);
-            })
-            .catch(() => console.log('error calling API'));
-    }, []);
-
-    const retrieveEvents = () => {
-        setLoading(true);
-        eventsRetriever()
-            .then((events) => {
-                setEvents(events.events);
-                setLoading(false);
-            })
-            .catch(() => {
-                setRetrieveError(true);
-                setLoading(false);
-            })
-    }
-
-    return (
-        <>
-            <Wrapper>
-                {alive ? <Typography data-testid={'up-and-running'}>server up and running!</Typography> :
-                    <LinearProgress data-testid={'progress'}/>}
-                <Button data-testid={'button'}
-                        variant="contained"
-                        onClick={retrieveEvents}
-                        disabled={!checked}>Click me</Button>
-                <Switch checked={checked} onChange={() => setChecked(!checked)}/>
-                {loading && <Loader/>}
-                {events.length > 0 && <EventList events={events}/>}
-            </Wrapper>
-            {retrieveError && <ErrorMessage onClose={() => setRetrieveError(false)}/>}
-        </>
-    )
+    return <>
+        <ControlPanel
+            aliveConfigProvider={() => restAliveConfigurationProvider()}
+            eventsRetriever={() => restEventsRetriever()}
+            onError={() => setRetrieveError(true)}
+        />
+        {retrieveError && <ErrorMessage onClose={() => setRetrieveError(false)}/>}
+    </>
 }

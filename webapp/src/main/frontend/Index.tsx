@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {App} from './App'
+import {ControlPanel} from './ControlPanel'
 import {restAliveConfigurationProvider} from "./logic/AliveConfigProvider";
 import {restEventsRetriever} from "./logic/EventDataRetriever";
+import {App} from "./App";
 
 ReactDOM.render(
-    <App aliveConfigProvider={() => restAliveConfigurationProvider()} eventsRetriever={() => restEventsRetriever()}/>,
+    <App />,
     document.getElementById('react')
 )

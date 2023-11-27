@@ -1,12 +1,12 @@
 import {render, screen, waitFor} from "@testing-library/react";
-import {App} from "./App";
+import {ControlPanel} from "./ControlPanel";
 
-describe('App', () => {
+describe('ControlPanel', () => {
     it('renders correctly when server is alive', () => {
         const aliveConfigProvider =
             jest.fn(() => Promise.resolve({alive: true, message: ""}));
 
-        render(<App aliveConfigProvider={aliveConfigProvider} eventsRetriever={jest.fn(() => Promise.resolve({events: []}))}/>);
+        render(<ControlPanel aliveConfigProvider={aliveConfigProvider} eventsRetriever={jest.fn(() => Promise.resolve({events: []}))} onError={jest.fn()}/>);
 
         waitFor(() => {
             expect(screen.getByTestId('button')).toBeVisible();
@@ -19,7 +19,7 @@ describe('App', () => {
         const aliveConfigProvider =
             jest.fn(() => Promise.resolve({alive: false, message: ""}));
 
-        render(<App aliveConfigProvider={aliveConfigProvider} eventsRetriever={jest.fn(() => Promise.reject())}/>);
+        render(<ControlPanel aliveConfigProvider={aliveConfigProvider} eventsRetriever={jest.fn(() => Promise.reject())} onError={jest.fn()}/>);
 
         waitFor(() => {
             expect(screen.getByTestId('button')).toBeVisible();
