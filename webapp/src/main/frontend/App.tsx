@@ -6,6 +6,7 @@ import {server} from "./server/Server";
 import {Loader} from "./Loader";
 import {AppEvent, EventsRetriever} from "./logic/EventDataRetriever";
 import {EventList} from "./EventList";
+import {ErrorMessage} from "./ErrorMessage";
 
 interface Props {
     aliveConfigProvider: AliveConfigProvider
@@ -33,6 +34,7 @@ export const App: React.FC<Props> = ({aliveConfigProvider, eventsRetriever}) => 
     const [checked, setChecked] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
     const [events, setEvents] = useState<AppEvent[]>([]);
+    const [retrieveError, setRetrieveError] = useState<boolean>(false);
 
 
     useEffect(() => {
@@ -51,21 +53,25 @@ export const App: React.FC<Props> = ({aliveConfigProvider, eventsRetriever}) => 
                 setLoading(false);
             })
             .catch(() => {
-                console.log('Error retrieving events');
+                setRetrieveError(true);
+                setLoading(false);
             })
     }
 
     return (
-        <Wrapper>
-            {alive ? <Typography data-testid={'up-and-running'}>server up and running!</Typography> :
-                <LinearProgress data-testid={'progress'}/>}
-            <Button data-testid={'button'}
-                    variant="contained"
-                    onClick={retrieveEvents}
-                    disabled={!checked}>Click me</Button>
-            <Switch checked={checked} onChange={() => setChecked(!checked)}/>
-            {loading && <Loader/>}
-            {events.length > 0 && <EventList events={events}/>}
-        </Wrapper>
+        <>
+            <Wrapper>
+                {alive ? <Typography data-testid={'up-and-running'}>server up and running!</Typography> :
+                    <LinearProgress data-testid={'progress'}/>}
+                <Button data-testid={'button'}
+                        variant="contained"
+                        onClick={retrieveEvents}
+                        disabled={!checked}>Click me</Button>
+                <Switch checked={checked} onChange={() => setChecked(!checked)}/>
+                {loading && <Loader/>}
+                {events.length > 0 && <EventList events={events}/>}
+            </Wrapper>
+            {retrieveError && <ErrorMessage onClose={() => setRetrieveError(false)}/>}
+        </>
     )
 }
