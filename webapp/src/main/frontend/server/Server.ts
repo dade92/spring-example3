@@ -26,6 +26,6 @@ export const server: () => Server = () =>
         logging: true,
         routes() {
             this.get('/api/alive', alive200, {timing: 1500});
-            this.get('/api/events', events500, {timing: 1500});
+            this.get('/api/events', events200, {timing: 1500});
         },
     });
