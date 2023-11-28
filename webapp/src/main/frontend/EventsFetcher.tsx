@@ -10,7 +10,7 @@ interface Props {
     onError: () => void;
 }
 
-export const EventFetcher: FC<Props> = ({eventsRetriever, onError}) => {
+export const EventsFetcher: FC<Props> = ({eventsRetriever, onError}) => {
     const eventsFetcherStore = useEventsFetcherStore(eventsRetriever, onError);
 
     return (

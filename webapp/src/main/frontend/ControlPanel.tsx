@@ -1,13 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {Button, LinearProgress, Switch, Typography} from "@mui/material";
+import {LinearProgress, Typography} from "@mui/material";
 import {AliveConfigProvider} from "./logic/AliveConfigProvider";
 import styled from "styled-components";
-import {server} from "./server/Server";
-import {Loader} from "./Loader";
-import {AppEvent, EventsRetriever} from "./logic/EventDataRetriever";
-import {EventList} from "./EventList";
-import {ErrorMessage} from "./ErrorMessage";
-import {EventFetcher} from "./EventFetcher";
+import {EventsRetriever} from "./logic/EventDataRetriever";
+import {EventsFetcher} from "./EventsFetcher";
 
 interface Props {
     aliveConfigProvider: AliveConfigProvider
@@ -44,7 +40,7 @@ export const ControlPanel: React.FC<Props> = ({aliveConfigProvider, eventsRetrie
                 <Typography data-testid={'up-and-running'}>server up and running!</Typography> :
                 <LinearProgress data-testid={'progress'}/>
             }
-            <EventFetcher eventsRetriever={eventsRetriever} onError={onError}/>
+            <EventsFetcher eventsRetriever={eventsRetriever} onError={onError}/>
         </Wrapper>
     )
 }
