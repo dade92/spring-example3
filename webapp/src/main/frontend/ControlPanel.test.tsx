@@ -13,6 +13,8 @@ describe('ControlPanel', () => {
             expect(screen.getByTestId('up-and-running')).toBeVisible();
             expect(screen.queryByTestId('progress')).not.toBeVisible();
         });
+
+        expect(aliveConfigProvider).toHaveBeenCalledTimes(1);
     })
 
     it('renders correctly when server is not alive', () => {
@@ -26,5 +28,7 @@ describe('ControlPanel', () => {
             expect(screen.queryByTestId('up-and-running')).not.toBeVisible();
             expect(screen.getByTestId('progress')).toBeVisible();
         });
+
+        expect(aliveConfigProvider).toHaveBeenCalledTimes(1);
     })
 })

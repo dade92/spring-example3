@@ -12,7 +12,7 @@ export const EventList: React.FC<Props> = ({events, isLoading}) => {
         {isLoading && <Loader/>}
         {
             events.map((e: AppEvent) => {
-                return <span>{e.message}</span>
+                return <span data-testid={`event-${e.message}`}>{e.message}</span>
             })
         }
     </>
