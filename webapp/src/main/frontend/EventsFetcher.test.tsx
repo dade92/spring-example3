@@ -1,10 +1,10 @@
-import {fireEvent, screen, render, waitFor} from "@testing-library/react";
+import {fireEvent, render, screen, waitFor} from "@testing-library/react";
 import {EventsFetcher} from "./EventsFetcher";
 import '@testing-library/jest-dom';
 
 describe('EventsFetcher', () => {
 
-    it('Shows button and fetch data when clicked', () => {
+    it('Shows button and fetch data when clicked', async () => {
         const eventsRetriever = jest.fn(() => Promise.resolve({events: [{message: 'Hey!'}]}));
         const onError = jest.fn();
 
@@ -12,15 +12,20 @@ describe('EventsFetcher', () => {
 
         expect(screen.getByTestId('fetcher-button')).toBeDisabled();
 
-        fireEvent.click(screen.getByTestId('switch-button'));
+        fireEvent.click(screen.getByRole('checkbox'));
+
+        await waitFor(() => {
+            expect(screen.getByTestId('fetcher-button')).toBeEnabled();
+        })
+
         fireEvent.click(screen.getByTestId('fetcher-button'));
 
-        waitFor(() => {
-            expect(screen.getByTestId('ciccio')).toBeInTheDocument();
+        await waitFor(() => {
+            expect(screen.getByTestId('event-0')).toBeInTheDocument();
         });
 
-        // expect(eventsRetriever).toHaveBeenCalledTimes(1);
-        // expect(onError).toHaveBeenCalledTimes(0);
+        expect(eventsRetriever).toHaveBeenCalledTimes(1);
+        expect(onError).toHaveBeenCalledTimes(0);
     });
 
 })

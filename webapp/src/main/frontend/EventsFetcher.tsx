@@ -1,6 +1,5 @@
 import React, {FC} from "react";
 import {Button, Switch} from "@mui/material";
-import {Loader} from "./Loader";
 import {EventList} from "./EventList";
 import {EventsRetriever} from "./logic/EventDataRetriever";
 import {useEventsFetcherStore} from "./EventsFetcherStore";
