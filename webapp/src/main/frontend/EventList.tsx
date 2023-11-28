@@ -11,8 +11,8 @@ export const EventList: React.FC<Props> = ({events, isLoading}) => {
     return <>
         {isLoading && <Loader/>}
         {
-            events.map((e: AppEvent) => {
-                return <span data-testid={`event-${e.message}`}>{e.message}</span>
+            events.map((e: AppEvent, index) => {
+                return <span data-testid={`event-${index}`}>{e.message}</span>
             })
         }
     </>

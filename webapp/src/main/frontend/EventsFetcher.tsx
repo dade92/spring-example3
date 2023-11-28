@@ -20,8 +20,7 @@ export const EventsFetcher: FC<Props> = ({eventsRetriever, onError}) => {
                     onClick={actions.onButtonClicked}
                     disabled={!state.checked}>Load events</Button>
             <Switch data-testid={'switch-button'}
-                checked={state.checked}
-                    onChange={() => actions.onSwitchClicked(!state.checked)}/>
+                    checked={state.checked} onChange={() => actions.onSwitchClicked(!state.checked)}/>
             <EventList events={state.events} isLoading={state.loading}/>
         </>
     )
