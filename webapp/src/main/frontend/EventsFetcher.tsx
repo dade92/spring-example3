@@ -11,17 +11,17 @@ interface Props {
 }
 
 export const EventsFetcher: FC<Props> = ({eventsRetriever, onError}) => {
-    const eventsFetcherStore = useEventsFetcherStore(eventsRetriever, onError);
+    const {state, actions} = useEventsFetcherStore(eventsRetriever, onError);
 
     return (
         <>
             <Button data-testid={'fetcher-button'}
                     variant="contained"
-                    onClick={eventsFetcherStore.actions.onButtonClicked}
-                    disabled={!eventsFetcherStore.state.checked}>Load events</Button>
-            <Switch checked={eventsFetcherStore.state.checked}
-                    onChange={() => eventsFetcherStore.actions.onSwitchClicked(!eventsFetcherStore.state.checked)}/>
-            <EventList events={eventsFetcherStore.state.events} isLoading={eventsFetcherStore.state.loading}/>
+                    onClick={actions.onButtonClicked}
+                    disabled={!state.checked}>Load events</Button>
+            <Switch checked={state.checked}
+                    onChange={() => actions.onSwitchClicked(!state.checked)}/>
+            <EventList events={state.events} isLoading={state.loading}/>
         </>
     )
 }
