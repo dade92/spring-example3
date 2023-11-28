@@ -18,7 +18,9 @@ export const useEventsFetcherStore = (eventsRetriever: EventsRetriever, onError:
     const [loading, setLoading] = useState<boolean>(false);
     const [events, setEvents] = useState<AppEvent[]>([]);
 
-    const retrieveEvents = () => {
+    const onSwitchClicked = (state: boolean) => setChecked(state);
+
+    const onButtonClicked = () => {
         setLoading(true);
         eventsRetriever()
             .then((events) => {
@@ -29,12 +31,12 @@ export const useEventsFetcherStore = (eventsRetriever: EventsRetriever, onError:
                 onError();
                 setLoading(false);
             })
-    }
+    };
 
     return {
         actions: {
-            onSwitchClicked: (state: boolean) => setChecked(state),
-            onButtonClicked: () => retrieveEvents(),
+            onSwitchClicked,
+            onButtonClicked,
         },
         state: {
             checked,
