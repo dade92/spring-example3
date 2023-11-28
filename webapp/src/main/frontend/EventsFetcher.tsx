@@ -21,8 +21,7 @@ export const EventsFetcher: FC<Props> = ({eventsRetriever, onError}) => {
                     disabled={!eventsFetcherStore.state.checked}>Load events</Button>
             <Switch checked={eventsFetcherStore.state.checked}
                     onChange={() => eventsFetcherStore.actions.onSwitchClicked(!eventsFetcherStore.state.checked)}/>
-            {eventsFetcherStore.state.loading && <Loader/>}
-            {eventsFetcherStore.state.events.length > 0 && <EventList events={eventsFetcherStore.state.events}/>}
+            <EventList events={eventsFetcherStore.state.events} isLoading={eventsFetcherStore.state.loading}/>
         </>
     )
 }
