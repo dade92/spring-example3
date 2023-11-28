@@ -3,10 +3,10 @@ import {EventsFetcher} from "./EventsFetcher";
 import '@testing-library/jest-dom';
 
 describe('EventsFetcher', () => {
+    const onError = jest.fn();
 
     it('Shows button and fetch data when clicked', async () => {
         const eventsRetriever = jest.fn(() => Promise.resolve({events: [{message: 'Hey!'}]}));
-        const onError = jest.fn();
 
         render(<EventsFetcher eventsRetriever={eventsRetriever} onError={onError}/>)
 
@@ -30,7 +30,6 @@ describe('EventsFetcher', () => {
 
     it('calls onError callback if rest call fails', async () => {
         const eventsRetriever = jest.fn(() => Promise.reject());
-        const onError = jest.fn();
 
         render(<EventsFetcher eventsRetriever={eventsRetriever} onError={onError}/>)
 
@@ -49,5 +48,4 @@ describe('EventsFetcher', () => {
             expect(onError).toHaveBeenCalledTimes(1);
         })
     });
-
 })
