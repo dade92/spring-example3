@@ -1,8 +1,8 @@
-import React, {FC, useState} from "react";
+import React, {FC} from "react";
 import {Button, Switch} from "@mui/material";
 import {Loader} from "./Loader";
 import {EventList} from "./EventList";
-import {AppEvent, EventsRetriever} from "./logic/EventDataRetriever";
+import {EventsRetriever} from "./logic/EventDataRetriever";
 import {useEventsFetcherStore} from "./EventsFetcherStore";
 
 interface Props {
@@ -19,7 +19,8 @@ export const EventsFetcher: FC<Props> = ({eventsRetriever, onError}) => {
                     variant="contained"
                     onClick={eventsFetcherStore.actions.onButtonClicked}
                     disabled={!eventsFetcherStore.state.checked}>Load events</Button>
-            <Switch checked={eventsFetcherStore.state.checked} onChange={() => eventsFetcherStore.actions.onSwitchClicked(!eventsFetcherStore.state.checked)}/>
+            <Switch checked={eventsFetcherStore.state.checked}
+                    onChange={() => eventsFetcherStore.actions.onSwitchClicked(!eventsFetcherStore.state.checked)}/>
             {eventsFetcherStore.state.loading && <Loader/>}
             {eventsFetcherStore.state.events.length > 0 && <EventList events={eventsFetcherStore.state.events}/>}
         </>
