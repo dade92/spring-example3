@@ -6,7 +6,9 @@ describe('EventsFetcher', () => {
     const onError = jest.fn();
 
     it('Shows button and fetch data when clicked', async () => {
-        const eventsRetriever = jest.fn(() => Promise.resolve({events: [{message: 'Hey!'}]}));
+        const eventsRetriever = jest.fn(
+            () => Promise.resolve({events: [{message: 'Hey!'}]})
+        );
 
         render(<EventsFetcher eventsRetriever={eventsRetriever} onError={onError}/>)
 
@@ -28,7 +30,7 @@ describe('EventsFetcher', () => {
         expect(onError).toHaveBeenCalledTimes(0);
     });
 
-    it('calls onError callback if rest call fails', async () => {
+    it('calls onError callback if fetcher call fails', async () => {
         const eventsRetriever = jest.fn(() => Promise.reject());
 
         render(<EventsFetcher eventsRetriever={eventsRetriever} onError={onError}/>)
