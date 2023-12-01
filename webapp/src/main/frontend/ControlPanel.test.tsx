@@ -23,7 +23,7 @@ describe('ControlPanel', () => {
         const aliveConfigProvider =
             jest.fn(() => Promise.resolve({alive: false, message: ""}));
 
-        render(<ControlPanel aliveConfigProvider={aliveConfigProvider} eventsRetriever={jest.fn(() => Promise.reject())}
+        render(<ControlPanel aliveConfigProvider={aliveConfigProvider} eventsRetriever={jest.fn()}
                              onError={jest.fn()}/>);
 
         await waitFor(() => {
