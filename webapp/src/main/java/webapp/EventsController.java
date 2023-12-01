@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class EventsController {
+public class EventsController extends ApiController{
 
-    @GetMapping("/api/events")
+    @GetMapping("/events")
     public ResponseEntity<?> retrieveEvents() {
         return ResponseEntity.ok(new EventsResponse(List.of(new EventResponse("a message"))));
     }
