@@ -1,6 +1,7 @@
 import React from "react";
 import {AppEvent} from './logic/EventDataRetriever'
 import {Loader} from "./Loader";
+import {List, ListItem, ListItemText} from "@mui/material";
 
 interface Props {
     events: AppEvent[];
@@ -12,7 +13,11 @@ export const EventList: React.FC<Props> = ({events, isLoading}) => {
         {isLoading && <Loader/>}
         {
             events.map((e: AppEvent, index) => {
-                return <span data-testid={`event-${index}`}>{e.message}</span>
+                return <ListItem data-testid={`event-${index}`}>
+                    <ListItemText>
+                        {e.message}
+                    </ListItemText>
+                </ListItem>
             })
         }
     </>
