@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class AliveController {
+public class AliveController extends ApiController {
 
     private final AliveProvider aliveProvider;
 
@@ -16,7 +16,7 @@ public class AliveController {
         this.aliveProvider = aliveProvider;
     }
 
-    @GetMapping("/api/alive")
+    @GetMapping("/alive")
     public ResponseEntity<AliveResponse> alive() {
         return ResponseEntity.ok(new AliveResponse(aliveProvider.retrieve(), "Some random message"));
     }
