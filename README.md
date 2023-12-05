@@ -9,7 +9,7 @@ spring boot.
 
 ### FE development only
 
-If you want to just see the UI, go inside the webapp folder and launch `npm run dev`. This will use webpack to launch a
+If you want to just see the UI, go inside the webapp folder and launch `npm start`. This will use webpack to launch a
 web server and put inside your js code. MirageJs is used to mock rest calls.
 
 ### FE pointing to BE
