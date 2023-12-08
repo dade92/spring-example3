@@ -1,12 +1,6 @@
-import React, {FC} from "react";
-import {AppEvent} from "./logic/EventDataRetriever";
-import {Card, CardActionArea, CardContent, Typography} from "@mui/material";
+import React, {FC, ReactNode} from "react";
+import {Card, CardActionArea, CardContent} from "@mui/material";
 import styled from "styled-components";
-
-interface Props {
-    event: AppEvent;
-    index: number;
-}
 
 const StyledCard = styled(CardContent)`
   min-height: 56px;
@@ -17,13 +11,16 @@ const StyledCard = styled(CardContent)`
   align-items: center;
 `
 
-export const EventCard: FC<Props> = ({event, index}) => {
-    return <Card data-testid={`event-${index}`} onClick={() => {console.log('event clicked: ' + index)}}>
+interface Props {
+    children: ReactNode;
+    onClick: () => void;
+}
+
+export const EventCard: FC<Props> = ({children, onClick}) => {
+    return <Card onClick={onClick}>
         <CardActionArea>
             <StyledCard>
-                <Typography>
-                    {event.message}
-                </Typography>
+                {children}
             </StyledCard>
         </CardActionArea>
     </Card>

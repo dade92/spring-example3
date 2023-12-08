@@ -1,9 +1,7 @@
 import React from "react";
 import {AppEvent} from './logic/EventDataRetriever'
 import {Loader} from "./Loader";
-import {Card, CardActionArea, CardContent, Typography} from "@mui/material";
-import styled from "styled-components";
-import {EventCard} from "./EventCard";
+import {Event} from "./Event";
 
 interface Props {
     events: AppEvent[];
@@ -15,7 +13,7 @@ export const EventList: React.FC<Props> = ({events, isLoading}) => {
         {isLoading && <Loader/>}
         {
             events.map((e: AppEvent, index) => {
-                return <EventCard event={e} index={index}/>
+                return <Event event={e} index={index}/>
             })
         }
     </>
