@@ -14,10 +14,11 @@ const StyledCard = styled(CardContent)`
 interface Props {
     children: ReactNode;
     onClick: () => void;
+    index: number;
 }
 
-export const EventCard: FC<Props> = ({children, onClick}) => {
-    return <Card onClick={onClick}>
+export const EventCard: FC<Props> = ({children, onClick, index}) => {
+    return <Card onClick={onClick} data-testid={`event-${index}`}>
         <CardActionArea>
             <StyledCard>
                 {children}

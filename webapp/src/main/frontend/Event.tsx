@@ -1,6 +1,7 @@
 import React, {FC} from "react";
 import {AppEvent} from "./logic/EventDataRetriever";
 import {EventCard} from "./EventCard";
+import {Typography} from "@mui/material";
 
 interface Props {
     event: AppEvent;
@@ -8,8 +9,11 @@ interface Props {
 }
 
 
-export const Event: FC<Props> = ({event, index}) => {
-    return <EventCard data-testid={`event-${index}`} onClick={() => {console.log('event clicked: ' + index)}}>
-        {event.message}
+export const Event: FC<Props> = ({event, index}) =>
+    <EventCard index={index} onClick={() => {
+        console.log('event clicked: ' + index)
+    }}>
+        <Typography>
+            {event.message}
+        </Typography>
     </EventCard>
-}
