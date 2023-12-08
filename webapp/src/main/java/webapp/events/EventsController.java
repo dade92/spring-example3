@@ -1,11 +1,11 @@
-package webapp;
+package webapp.events;
 
 import domain.events.Event;
 import domain.events.EventsProvider;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import webapp.alive.ApiController;
 
 import java.util.List;
 

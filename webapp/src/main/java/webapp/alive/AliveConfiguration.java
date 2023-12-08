@@ -1,4 +1,4 @@
-package webapp;
+package webapp.alive;
 
 import domain.AliveProvider;
 import domain.DefaultAliveProvider;
