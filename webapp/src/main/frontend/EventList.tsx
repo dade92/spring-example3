@@ -10,8 +10,7 @@ interface Props {
 
 export const EventList: React.FC<Props> = ({events, isLoading}) => {
     return <>
-        {isLoading && <Loader/>}
-        {
+        {isLoading ? <Loader/> :
             events.map((e: AppEvent, index) => {
                 return <Event event={e} index={index} onClick={() => {
                     console.log('event clicked: ' + index)
