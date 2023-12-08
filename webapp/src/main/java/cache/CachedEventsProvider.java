@@ -10,10 +10,7 @@ public class CachedEventsProvider implements EventsProvider {
 
     private final EventsProvider delegate;
 
-    public CachedEventsProvider(
-        EventsProvider delegate
-    ) {
-
+    public CachedEventsProvider(EventsProvider delegate) {
         this.delegate = delegate;
     }
 
