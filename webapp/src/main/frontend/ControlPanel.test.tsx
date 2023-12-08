@@ -8,7 +8,7 @@ describe('ControlPanel', () => {
             jest.fn(() => Promise.resolve({alive: true, message: ""}));
 
         render(<ControlPanel aliveConfigProvider={aliveConfigProvider}
-                             eventsRetriever={jest.fn(() => Promise.resolve({events: []}))} onError={jest.fn()}/>);
+                             eventsRetriever={jest.fn(() => Promise.resolve({events: []}))} onFetchEventsError={jest.fn()}/>);
 
         await waitFor(() => {
             expect(screen.getByTestId('fetcher-button')).toBeVisible();
@@ -24,7 +24,23 @@ describe('ControlPanel', () => {
             jest.fn(() => Promise.resolve({alive: false, message: ""}));
 
         render(<ControlPanel aliveConfigProvider={aliveConfigProvider} eventsRetriever={jest.fn()}
-                             onError={jest.fn()}/>);
+                             onFetchEventsError={jest.fn()}/>);
+
+        await waitFor(() => {
+            expect(screen.getByTestId('fetcher-button')).toBeVisible();
+            expect(screen.queryByTestId('up-and-running')).toBeNull();
+            expect(screen.getByTestId('progress')).toBeVisible();
+        });
+
+        expect(aliveConfigProvider).toHaveBeenCalledTimes(1);
+    })
+
+    it('renders when alive provider throws an exception', async () => {
+        const aliveConfigProvider =
+            jest.fn().mockRejectedValue(new Error());
+
+        render(<ControlPanel aliveConfigProvider={aliveConfigProvider} eventsRetriever={jest.fn()}
+                             onFetchEventsError={jest.fn()}/>);
 
         await waitFor(() => {
             expect(screen.getByTestId('fetcher-button')).toBeVisible();

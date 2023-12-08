@@ -16,7 +16,7 @@ export const App: FC = () => {
         <ControlPanel
             aliveConfigProvider={() => restAliveConfigurationProvider()}
             eventsRetriever={() => restEventsRetriever()}
-            onError={() => setRetrieveError(true)}
+            onFetchEventsError={() => setRetrieveError(true)}
         />
         {retrieveError && <ErrorMessage onClose={() => setRetrieveError(false)}/>}
     </>
