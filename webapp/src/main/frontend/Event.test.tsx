@@ -1,5 +1,6 @@
 import {fireEvent, render, screen} from "@testing-library/react";
 import {Event} from './Event'
+
 describe('Event', () => {
 
     it('calls on click callback when click on card', () => {
