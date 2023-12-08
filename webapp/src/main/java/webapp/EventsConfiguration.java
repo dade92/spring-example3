@@ -1,5 +1,6 @@
 package webapp;
 
+import cache.CachedEventsProvider;
 import domain.events.EventsProvider;
 import domain.events.InMemoryEventsProvider;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +11,9 @@ public class EventsConfiguration {
 
     @Bean
     public EventsProvider eventsProvider() {
-        return new InMemoryEventsProvider();
+        return new CachedEventsProvider(
+            new InMemoryEventsProvider()
+        );
     }
 
 }
