@@ -1,6 +1,8 @@
 package webapp;
 
+import domain.events.Event;
 import domain.events.EventsProvider;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +20,15 @@ public class EventsController extends ApiController {
 
     @GetMapping("/events")
     public ResponseEntity<?> retrieveEvents() {
-        return ResponseEntity.ok(new EventsResponse(
-            eventsProvider.retrieve().stream().map(e -> new EventResponse(e.message())).toList()));
+        List<Event> events = eventsProvider.retrieve();
+
+        return ResponseEntity.ok(adaptEventsToResponse(events));
+    }
+
+    private EventsResponse adaptEventsToResponse(List<Event> events) {
+        return new EventsResponse(
+            events.stream().map(e -> new EventResponse(e.message())).toList()
+        );
     }
 
 }
