@@ -3,6 +3,7 @@ import {CircularProgress, circularProgressClasses} from "@mui/material";
 export const Loader: React.FC = () => {
     return (
         <CircularProgress
+            data-testid={'loader'}
             variant="indeterminate"
             disableShrink
             sx={{
