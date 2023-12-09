@@ -1,4 +1,4 @@
-package webapp.alive;
+package webapp;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
