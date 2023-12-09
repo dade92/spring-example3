@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 public class EventsController extends ApiController {
 
-    private EventsProvider eventsProvider;
+    private final EventsProvider eventsProvider;
 
     public EventsController(EventsProvider eventsProvider) {
         this.eventsProvider = eventsProvider;
