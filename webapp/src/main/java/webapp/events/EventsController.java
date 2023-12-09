@@ -39,8 +39,6 @@ public class EventsController extends ApiController {
 
 }
 
-class EventsRetrieveError extends Exception {}
-
 record EventsResponse(List<EventResponse> events) {}
 
 record EventResponse(String message) {}
