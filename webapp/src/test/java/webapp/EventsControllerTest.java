@@ -11,6 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import webapp.events.EventsController;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -29,7 +30,7 @@ public class EventsControllerTest {
 
     @Test
     void returns200() throws Exception {
-        when(eventsProvider.retrieve()).thenReturn(List.of(new Event("hey!")));
+        when(eventsProvider.retrieve()).thenReturn(Optional.of(List.of(new Event("hey!"))));
 
         mvc.perform(
             get("/api/events")
@@ -37,6 +38,19 @@ public class EventsControllerTest {
             )
             .andExpect(status().isOk())
             .andExpect(content().json("{events: [{message: 'hey!'}]}"));
+
+        verify(eventsProvider).retrieve();
+    }
+
+    @Test
+    void returns500InCaseOfErrors() throws Exception {
+        when(eventsProvider.retrieve()).thenReturn(Optional.empty());
+
+        mvc.perform(
+                get("/api/events")
+                    .contentType(MediaType.APPLICATION_JSON)
+            )
+            .andExpect(status().is5xxServerError());
 
         verify(eventsProvider).retrieve();
     }

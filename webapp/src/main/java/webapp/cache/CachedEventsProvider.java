@@ -5,6 +5,7 @@ import domain.events.EventsProvider;
 import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CachedEventsProvider implements EventsProvider {
 
@@ -16,7 +17,7 @@ public class CachedEventsProvider implements EventsProvider {
 
     @Override
     @Cacheable("events")
-    public List<Event> retrieve() {
+    public Optional<List<Event>> retrieve() {
         return delegate.retrieve();
     }
 }

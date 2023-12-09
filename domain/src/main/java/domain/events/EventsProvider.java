@@ -1,7 +1,8 @@
 package domain.events;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EventsProvider {
-    List<Event> retrieve();
+    Optional<List<Event>> retrieve();
 }
