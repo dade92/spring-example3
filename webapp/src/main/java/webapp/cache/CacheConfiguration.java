@@ -1,4 +1,4 @@
-package cache;
+package webapp.cache;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import org.springframework.cache.CacheManager;

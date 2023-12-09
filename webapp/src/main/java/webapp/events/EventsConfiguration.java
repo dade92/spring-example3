@@ -1,6 +1,6 @@
 package webapp.events;
 
-import cache.CachedEventsProvider;
+import webapp.cache.CachedEventsProvider;
 import domain.events.EventsProvider;
 import domain.events.InMemoryEventsProvider;
 import org.springframework.context.annotation.Bean;

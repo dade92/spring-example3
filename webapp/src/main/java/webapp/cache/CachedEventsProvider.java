@@ -1,4 +1,4 @@
-package cache;
+package webapp.cache;
 
 import domain.events.Event;
 import domain.events.EventsProvider;

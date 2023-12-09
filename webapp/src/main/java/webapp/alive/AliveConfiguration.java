@@ -1,7 +1,7 @@
 package webapp.alive;
 
-import domain.AliveProvider;
-import domain.DefaultAliveProvider;
+import domain.alive.AliveProvider;
+import domain.alive.DefaultAliveProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
