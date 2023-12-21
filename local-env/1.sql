@@ -1,10 +1,8 @@
 CREATE SCHEMA IF NOT EXISTS `spring-example3`;
 USE `spring-example3`;
 
-DROP TABLE IF EXISTS TEST;
-CREATE TABLE TEST
-(
+DROP TABLE IF EXISTS EVENTS;
+CREATE TABLE EVENTS (
     ID int PRIMARY KEY AUTO_INCREMENT,
-    testField varchar(255),
-    anotherTestField varchar(255)
+    event_message varchar(255)
 );

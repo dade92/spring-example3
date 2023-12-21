@@ -1,5 +1,7 @@
 package webapp.events;
 
+import events.JdbcEventsProvider;
+import org.springframework.jdbc.core.JdbcTemplate;
 import webapp.cache.CachedEventsProvider;
 import domain.events.EventsProvider;
 import domain.events.InMemoryEventsProvider;
@@ -10,9 +12,9 @@ import org.springframework.context.annotation.Configuration;
 public class EventsConfiguration {
 
     @Bean
-    public EventsProvider eventsProvider() {
+    public EventsProvider eventsProvider(JdbcTemplate appJdbcTemplate) {
         return new CachedEventsProvider(
-            new InMemoryEventsProvider()
+            new JdbcEventsProvider(appJdbcTemplate)
         );
     }
 

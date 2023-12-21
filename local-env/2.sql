@@ -1,4 +1,4 @@
 USE `spring-example3`;
 
-INSERT INTO TEST (testField, anotherTestField) VALUES ('Davide', 'Test 1');
-INSERT INTO TEST (testField, anotherTestField) VALUES ('Davide', 'Test 2');
+INSERT INTO EVENTS (event_message) VALUES ('Hey! First event message');
+INSERT INTO EVENTS (event_message) VALUES ('Hey! Second event message');
