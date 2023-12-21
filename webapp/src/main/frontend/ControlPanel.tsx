@@ -8,7 +8,7 @@ import {EventsFetcher} from "./EventsFetcher";
 interface Props {
     aliveConfigProvider: AliveConfigProvider
     eventsRetriever: EventsRetriever
-    onError: () => void;
+    onFetchEventsError: () => void;
 }
 
 const Wrapper = styled.div`
@@ -18,12 +18,15 @@ const Wrapper = styled.div`
   margin-right: -50%;
   transform: translate(-50%, -50%);
   width: 30%;
+  @media screen and (max-width: 600px) {
+    width: 50%;
+  }
   display: flex;
   flex-direction: column;
   row-gap: 16px;
 `
 
-export const ControlPanel: React.FC<Props> = ({aliveConfigProvider, eventsRetriever, onError}) => {
+export const ControlPanel: React.FC<Props> = ({aliveConfigProvider, eventsRetriever, onFetchEventsError}) => {
     const [alive, setAlive] = useState<boolean>(false);
 
     useEffect(() => {
@@ -40,7 +43,7 @@ export const ControlPanel: React.FC<Props> = ({aliveConfigProvider, eventsRetrie
                 <Typography data-testid={'up-and-running'}>server up and running!</Typography> :
                 <LinearProgress data-testid={'progress'}/>
             }
-            <EventsFetcher eventsRetriever={eventsRetriever} onError={onError}/>
+            <EventsFetcher eventsRetriever={eventsRetriever} onError={onFetchEventsError}/>
         </Wrapper>
     )
 }

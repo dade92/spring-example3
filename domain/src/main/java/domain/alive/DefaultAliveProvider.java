@@ -1,4 +1,4 @@
-package domain;
+package domain.alive;
 
 public class DefaultAliveProvider implements AliveProvider {
     @Override

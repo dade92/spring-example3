@@ -1,46 +1,6 @@
-POST http://localhost:8080/insert
+
+# events API
+
+GET {{localhost}}/api/events
 Content-Type: application/json
 Accept: application/json
-
-{
-    "name": "Carlo",
-    "age": 31,
-    "favouriteDestinations": {
-        "destinations": [
-            {
-                "city": "Milan"
-            },
-            {
-                "city": "London"
-            }
-        ]
-    }
-}
-
-###
-
-GET {{localhost}}/find?name=Sergio
-Content-Type: application/json
-Accept: application/json
-
-###
-
-GET {{localhost}}/retrieveUsers
-Content-Type: application/json
-Accept: application/json
-
-###
-
-GET {{localhost}}/translations/en
-Content-Type: application/json
-Accept: application/json
-
-###
-
-POST {{localhost}}/send
-Content-Type: application/json
-Accept: application/json
-
-{
-  "message": "Hey there!!!"
-}

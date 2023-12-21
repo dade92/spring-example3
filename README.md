@@ -27,6 +27,13 @@ if you run it and then try to run the application locally, you will see the appl
 BE needs a database to run. For local development, you can run the script `run-local-environment.sh` to start a fresh
 local Mysql instance with sample data inside. You can access it at `localhost:3306`.
 
+## DB management
+
+App has a relational mysql database under the hood to store data. In order to create a new table or modifying the existing ones,
+just modify the script `local-env/1.sql`: this script should contain all the creates table needed for the local db.
+This script will be automatically copied at deploy phase, and will be used to initialize new data. If a modification to the 
+database is required, probably we need to re-execute all the script, loosing previous data.
+
 ## CI/CD
 
 The project is integrated with Github actions. You can find the configuration inside the .github folder.

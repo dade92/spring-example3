@@ -1,4 +1,4 @@
-package domain;
+package domain.alive;
 
 public interface AliveProvider {
     boolean retrieve();
