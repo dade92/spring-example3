@@ -1,16 +1,9 @@
-DROP TABLE IF EXISTS USERS;
-CREATE TABLE USERS
+DROP TABLE IF EXISTS EVENTS;
+CREATE TABLE EVENTS
 (
     ID int PRIMARY KEY AUTO_INCREMENT,
-    USERNAME varchar(255),
-    PASSWORD varchar(255),
-    ADDRESS varchar(255)
+    event_message varchar(255)
 );
-DROP TABLE IF EXISTS ORDERS;
-CREATE TABLE ORDERS
-(
-    ID int PRIMARY KEY AUTO_INCREMENT,
-    TYPE varchar(255),
-    USER_ID int,
-    INSERTION_TIME date
-)
+
+INSERT INTO EVENTS (ID, event_message) VALUES (1, 'first message');
+INSERT INTO EVENTS (ID, event_message) VALUES (2, 'second message');
