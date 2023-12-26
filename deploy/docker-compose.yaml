@@ -10,8 +10,8 @@ services:
     build: .
     container_name: db
 #    If you want to access "prod" database
-#    ports:
-#      - "3306:3306"
+    ports:
+      - "3306:3306"
     volumes:
       - spring-example3-data:/var/lib/mysql
 volumes:

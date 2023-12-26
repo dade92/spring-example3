@@ -5,7 +5,7 @@ if (process.env.NODE_ENV === 'development') {
     console.log('Development mode active');
 } else if (process.env.NODE_ENV === 'production') {
     //Modify the host here to deploy on a different "server"
-    host = "http://Davides-MBP:8080/api";
+    host = "http://raspberrypi:8080/api";
 }
 
 class RestClient {
