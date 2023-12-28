@@ -1,7 +1,5 @@
 echo "Setting up environment"
-cp ./local-env/1.sql ./deploy
-
-cd deploy
+cp ../local-env/1.sql .
 
 echo "Pulling the latest images..."
 
