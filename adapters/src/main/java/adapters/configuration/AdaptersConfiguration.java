@@ -9,15 +9,15 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import javax.sql.DataSource;
 
 @Configuration
-@EnableConfigurationProperties(DBConfig.class)
+@EnableConfigurationProperties(DBConfigProperties.class)
 public class AdaptersConfiguration {
 
     @Bean
-    public  DataSource appDataSource(DBConfig dbConfig) {
+    public  DataSource appDataSource(DBConfigProperties dbConfigProperties) {
         DataSourceBuilder<?> dataSourceBuilder = DataSourceBuilder.create();
-        dataSourceBuilder.url(dbConfig.url);
-        dataSourceBuilder.username(dbConfig.username);
-        dataSourceBuilder.password(dbConfig.password);
+        dataSourceBuilder.url(dbConfigProperties.url);
+        dataSourceBuilder.username(dbConfigProperties.username);
+        dataSourceBuilder.password(dbConfigProperties.password);
         return dataSourceBuilder.build();
     }
 
