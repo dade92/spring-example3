@@ -16,7 +16,7 @@ web server and put inside your js code. MirageJs is used to mock rest calls.
 
 - Build for development: inside the webapp application, run `npm run start:local`: this will generate the js executables inside
   the resources/static folder. Then launch the application using IDEA. Actually, the npm command just produces the minified
-  js that will be imported in the .html file.. So there is no need to keep it active after compilation.
+  js that will be imported in the .html file.. So there is no need to keep it active after compilation. Then run the Java app.
 - Build for production (not useful for development, is something the pipeline will take care of) run `mvn clean package`
   and then launch the jar inside the webapp/target folder
 
@@ -25,6 +25,7 @@ if you run it and then try to run the application locally, you will see the appl
 (taken from the /target folder built before using maven).
 
 ### Local environment
+
 BE needs a database to run. For local development, you can run the script `run-local-environment.sh` to start a fresh
 local Mysql instance with sample data inside. You can access it at `localhost:3306`.
 
